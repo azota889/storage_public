@@ -118,13 +118,7 @@ window.addEventListener("message", function (event) {
             }*/
             
         }
-        if(event.data.cmd && event.data.cmd=="MNoteStaticText"){
-            mnote=MNote.getInstance();
-            mnote.staticTextConfig=JSON.parse(event.data.data);
-            if(localStorage){
-                localStorage.setItem("staticTextConfig",JSON.stringify(mnote.staticTextConfig));
-            }
-        }
+
 
         if(event.data.cmd && event.data.cmd=="getMNoteJson"){
            parent.postMessage({cmd:"MNoteJson",data:mnote.exportJSON()},"*"); 
@@ -170,9 +164,8 @@ function drawArrowhead(context, from, to, radius) {
 parent.postMessage("MNoteLoadComplete","*"); 
 
 function is_touch_device() {
-    var supportsTouch = 'ontouchstart' in window || navigator.msMaxTouchPoints;
-    return supportsTouch;
-}
+    return 'ontouchstart' in window;
+  }
 function isDomVisile(dom){
     if($(dom).css("display")=="none") return false;
     return true;
@@ -205,9 +198,6 @@ function exportJSON(){
 
 function exportPdf(){
     MNote.getInstance().exportPdf();
-}
-function exportPdf_(){
-    MNote.getInstance().exportPdf_();
 }
 
 $(window).on("load",function() {
@@ -244,7 +234,7 @@ var MNote_instance=cc.Class.extend({
     pageCount:0,
     pageScale:1,
     maxLineWidth:25,
-    minLineWidth:1,
+    minLineWidth:2,
     maxTextSize:60,
     minTextSize:20,
     isDrawingMode:false,
@@ -284,8 +274,6 @@ var MNote_instance=cc.Class.extend({
      mnotedata:null,
 
      staticTextConfig:null,
-
-     desktopZoom:1,
 
     ctor:function(){
         var self=this;
@@ -428,12 +416,9 @@ var MNote_instance=cc.Class.extend({
             this.currDrawStyle.lineWidth=6;
         }else{
            // $("#mnote_app").css("overflow","scroll");
-           $('body').attr("spellcheck",false);
-           $("#mnote_content").css("overflow","scroll");
+           $('body').attr("spellcheck",false)
            $("#menu_text_font").css("transform","scale(1)");
            $("#bt_trash").css("left","0px");
-           $("#mnote_setting_zoom_out").css("display","block");
-           $("#mnote_setting_zoom_in").css("display","block");
            $("#bt_trash").css("top",window.innerHeight/2+"px");
            this.currDrawStyle.lineWidth=2;
            this.minTextSize=10;
@@ -540,8 +525,6 @@ var MNote_instance=cc.Class.extend({
 
             var cvslider=document.getElementById("slider_text_size");
             cvslider.isMouseDown=false;
-
-            $("#mnote_menu_edit_bg").css("display","none");
             
         })
         window.addEventListener('mousemove',(e)=>{
@@ -549,9 +532,6 @@ var MNote_instance=cc.Class.extend({
             if(objDown.length>0){
                 this._moveObj($(objDown[0]).get(0),e);
             }
-        })
-        window.addEventListener("mousedown",(e)=>{
-           // $("#mnote_menu_edit_bg").css("display","none");
         })
         
 
@@ -617,37 +597,6 @@ var MNote_instance=cc.Class.extend({
             parent.postMessage({cmd:"MNoteReSubmit",data:{}},"*");
         })
 
-        $("#mnote_setting_zoom_out").click(()=>{
-            this.setDesktopZoom(this.desktopZoom-0.4);
-        })
-        $("#mnote_setting_zoom_in").click(()=>{
-            this.setDesktopZoom(this.desktopZoom+0.4);
-        })
-        $("#mnote_menu_edit_bg_rotate").click((e)=>{
-            $("#mnote_menu_edit_bg").css("display","none");
-            var pageid=$("#mnote_menu_edit_bg").attr("data");
-            this.rotateBgPage(pageid);
-            e.preventDefault();
-            e.stopPropagation();
-        })
-        $("#mnote_menu_edit_bg_moveup").click((e)=>{
-            $("#mnote_menu_edit_bg").css("display","none");
-            var pageid=$("#mnote_menu_edit_bg").attr("data");
-            this.moveUpPage(pageid);
-            e.preventDefault();
-            e.stopPropagation();
-        })
-        $("#mnote_menu_edit_bg_movedown").click((e)=>{
-            $("#mnote_menu_edit_bg").css("display","none");
-            var pageid=$("#mnote_menu_edit_bg").attr("data");
-            this.moveDownPage(pageid);
-            e.preventDefault();
-            e.stopPropagation();
-        })
-       /* $("#mnote_menu_edit_bg").on("mouseout",()=>{
-            $("#mnote_menu_edit_bg").css("display","none");
-        })*/
-
     },
 
 
@@ -666,15 +615,6 @@ var MNote_instance=cc.Class.extend({
             e.preventDefault();
             e.stopPropagation();
     },
-
-    setDesktopZoom(zoom){
-        if(zoom>=0.6 && zoom<=8){
-            this.desktopZoom=zoom;
-            $("#mnote_container").css("transform","scale("+this.desktopZoom+")");       
-        }
-    },
-
-
     initNote:function(data){
         //valide notedata 
         this.mnotedata=data;
@@ -694,8 +634,6 @@ var MNote_instance=cc.Class.extend({
             // console.log("initMnote");
                 if(data.staticTextConfig){
                     this.staticTextConfig=JSON.parse(data.staticTextConfig);
-                }else{
-
                 }
 
                 if(data.student_obj && data.student_obj.fullName){
@@ -716,21 +654,7 @@ var MNote_instance=cc.Class.extend({
                     $("#mnote_user_homework").html(data.homework_obj.content);
                     this.mnotedata.homework=replaceTV(data.homework_obj.name.substr(0,50));
                 }
-                
-                //set ordering if not
-                for(var i=0;i<data.pages.length;i++){
-                    //if(data.pages[i].order==undefined) data.pages[i].order=i;
-                    if(data.pages[i].id==undefined) data.pages[i].id=i;
-                }
-                //sort ordering 
-               /* for(var i=0;i<data.pages.length;i++)
-                  for(var j=i;j<data.pages.lengthl;j++){
-                      if(data.pages[i].order>data.pages[j].order){
-                          var tmp=data.pages[j];
-                          data.pages[j]=data.pages[i];
-                          data.pages[i]=tmp;
-                      }
-                  }*/
+
 
                 this.addPages(data.pages);
                 if(data.comment){
@@ -748,19 +672,13 @@ var MNote_instance=cc.Class.extend({
                 
                 if(this.mnotedata.mode=="edit"){
                     var hideMark=false;
-                    try{
-                        if(localStorage){
-                            hideMark=(localStorage.getItem("hideMark")=="true")?true:false;
-                        }
-                    }catch{
-
+                    if(localStorage){
+                        hideMark=Boolean(localStorage.getItem("hideMark"));
                     }
-                    
 
                     if(this.mnotedata.hideMark==true){
                         this.hideMark();
                     }else{
-
                         if(hideMark) this.hideMark()
                         else this.showMark();
                     }
@@ -780,7 +698,7 @@ var MNote_instance=cc.Class.extend({
                     $("#mnote_mark_chose").css("display","none");
                     $("#btn_save_data").css("display","none");
                     $("#mnote_hold_bt").css("display","none");
-                    $("#mnote_mark").css("top","0px");
+                    $("#mnote_mark").css("top","36px");
                     $("#hide_mark").css("display","none");
                     $("#mnote_mark_hide").css("display","none");
                     var h=$("#mnote_mark_point").height()-10;
@@ -791,8 +709,6 @@ var MNote_instance=cc.Class.extend({
                     }),
                     $("#mnote_mark_result").css("display","none");
                     $("#mnote_setting_bt").css("display","none");
-                    $("#mnote_setting_zoom_in").css("display","none");
-                    $("#mnote_setting_zoom_out").css("display","none");
                     $("#mnote_mark_emoji_bt").css("display","none");
                     $("#mnote_help").css("display","none");
                     $("#mnote_mark_emoji_bt").css("display","none");
@@ -823,10 +739,10 @@ var MNote_instance=cc.Class.extend({
          //validate page info
  
          var self=this;
-        
+ 
          //init ui 
-         var pageid="page_"+page.id;
-         var divpage=$('<div data="'+page.id+'" id="'+pageid+'" class="page"></div>');
+         var pageid="page_"+this.pageCount;
+         var divpage=$('<div data="'+this.pageCount+'" id="'+pageid+'" class="page"></div>');
          $(divpage).css("margin-top","5px");
          $(this.note_pages).append($(divpage));
          $(divpage).width(this.pageWidth-200);
@@ -841,22 +757,20 @@ var MNote_instance=cc.Class.extend({
          $(divpage).append($(divpage_objs_layer));  
          $(divpage_objs_layer).css("pointer-events","none");
 
-        var btEditBg=$('<i data="rotate" class="material-icons bt-edit-bg waves-effect waves-light" style="font-size:35px">crop_rotate</i>');
-        var btEditBgMoveUp=$('<i data="moveup" class="material-icons bt-edit-bg waves-effect waves-light" style="right:50px;font-size:35px">arrow_upward</i>');
+        var btEditBg=$('<i class="material-icons bt-edit-bg waves-effect waves-light">crop_rotate</i>');
         $(divpage).append($(btEditBg));
-        $(divpage).append($(btEditBgMoveUp));
 
          var canvas=document.createElement("canvas");
-         canvas.id="canvas_"+page.id;
-         canvas.index=page.id;
-         canvas.pageid=page.id;
+         canvas.id="canvas_"+this.pageCount;
+         canvas.index=this.pageCount;
+         canvas.pageid=this.pageCount;
          canvas.style="position:absolute";
          $(canvas).addClass("canvas_draw");   
          this.addCanvasEventListener(canvas);
 
          var canvasDraw=document.createElement("canvas");
-         canvasDraw.id="canvasDraw_"+page.id;
-         canvasDraw.pageid=page.id;
+         canvasDraw.id="canvasDraw_"+this.pageCount;
+         canvasDraw.pageid=this.pageCount;
          canvasDraw.style="position:absolute";
          $(divpage_canvas_draw).append(canvasDraw);
          $(divpage_canvas_draw).append(canvas);
@@ -872,7 +786,6 @@ var MNote_instance=cc.Class.extend({
             || urlLowerCase.indexOf(".webm")>=length-5
             || urlLowerCase.indexOf(".mp3")>=length-5
             || urlLowerCase.indexOf(".m4a")>=length-5
-            || urlLowerCase.indexOf("player.vimeo")>=0
           ){
              isVideoPage=true;
              canvas.pagetype=1;
@@ -883,7 +796,7 @@ var MNote_instance=cc.Class.extend({
         // console.log("add page :"+page.backgroundImage+":"+isVideoPage);
 
          if(!isNaN(page.width) && !isNaN(page.height)){
-            self.resizePage(page.id,page.width,page.height);
+            self.resizePage(this.pageCount,page.width,page.height);
          }else{
             needUpdateSize=true;
          }
@@ -894,18 +807,13 @@ var MNote_instance=cc.Class.extend({
                 //video background
                // var videodiv=$('<video class="video-js" controls preload="auto" width="800" height="450"><source src="'+page.backgroundImage+'" type="video/mp4" /></video>');
                // $(divpage_bg).append($(videodiv));
-               if(page.backgroundImage.indexOf("player.vimeo")>=0){
-                    $(divpage_bg).html('<iframe src="'+page.backgroundImage+'" width="100%" height=450 style="border:none"></iframe>');
-               }else{
-                    $(divpage_bg).html('<video id="video_'+page.id+'" class="video-js vjs-big-play-centered" controls preload="auto" width="100%" height="450" style="width:100%;height:450px"><source src="'+page.backgroundImage+'" type="video/mp4" /></video>');
-                    videojs('video_'+page.id, {
-                        controls: true,
-                        autoplay: false,
-                        preload: 'auto'
-                    });
-               }
-               
-               self.resizePage(page.id,self.pageWidth,450,null);
+               $(divpage_bg).html('<video id="video_'+this.pageCount+'" class="video-js vjs-big-play-centered" controls preload="auto" width="100%" height="450" style="width:100%;height:450px"><source src="'+page.backgroundImage+'" type="video/mp4" /></video>');
+                videojs('video_'+this.pageCount, {
+                    controls: true,
+                    autoplay: false,
+                    preload: 'auto'
+                });
+               self.resizePage(this.pageCount,self.pageWidth,450,null);
                canvasDraw.style.pointerEvents="none";
                canvas.style.pointerEvents="none";
                $(canvas.parentNode).css("pointer-events","none");
@@ -913,9 +821,8 @@ var MNote_instance=cc.Class.extend({
                 var img=new Image();
                 $(divpage_bg).append(img);
                 this.arrImg.push(img);
-                $(img).attr("pageid",page.id);
-                $(img).attr("id","image_bg_"+page.id);
-                $(img).attr("nl","1");
+                $(img).attr("pageid",this.pageCount);
+                $(img).attr("id","image_bg_"+this.pageCount);
                 img.crossOrigin = "anonymous";
                 img.onload=function(){
                     if(!$(this).parent()) return;
@@ -934,28 +841,24 @@ var MNote_instance=cc.Class.extend({
                     
                 }
                 img.onerror=function(){
-                    if($(this).attr("nl")=="1"){
-                        $(this).attr("src",$(this).attr("src")+"?time="+new Date().getTime());
-                    }
-                    $(this).attr("nl","2");
-                   /* if(!$(this).parent()) return;
+                    if(!$(this).parent()) return;
                     var id=parseInt($(this).parent().parent().attr("data"));
                     var width=self.pageWidth;
                     var height=9*width/16;
-                    if(needUpdateSize) self.resizePage(id,width,height,null);*/
+                    if(needUpdateSize) self.resizePage(id,width,height,null);
                 }
                 img.src=page.backgroundImage;
             }
          }else{
             var width=self.pageWidth;
             var height=4*width/3;
-            self.resizePage(page.id,width,height,null);
+            self.resizePage(this.pageCount,width,height,null);
          }
          if(page.draw){
             page.draw=page.draw.replaceAll("https://cdn.azota.vn/api/download_public","https://wewiin.nyc3.cdn.digitaloceanspaces.com");
              //init draw
              var imgdraw=new Image();
-             $(img).attr("pageid",page.id);
+             $(img).attr("pageid",this.pageCount);
              imgdraw.onload=function(e){
                  var canvas=document.getElementById("canvas_"+parseInt($(img).attr("pageid")));
                  if(canvas){
@@ -969,13 +872,13 @@ var MNote_instance=cc.Class.extend({
          if(page.staticText && page.staticText.length>0){
              //init objs
              for(var i=0;i<page.staticText.length;i++){
-                 this.addStaticText(page.id,page.staticText[i].value,page.staticText[i].x,page.staticText[i].y);
+                 this.addStaticText(this.pageCount,page.staticText[i].value,page.staticText[i].x,page.staticText[i].y);
              }
          }
          if(page.objText && page.objText.length>0){
             //init objs
             for(var i=0;i<page.objText.length;i++){
-                this._addText(page.id,page.objText[i].value,page.objText[i].x,page.objText[i].y,page.objText[i].textStyle);
+                this._addText(this.pageCount,page.objText[i].value,page.objText[i].x,page.objText[i].y,page.objText[i].textStyle);
             }
         }
 
@@ -992,8 +895,8 @@ var MNote_instance=cc.Class.extend({
         if(page.comment){
             $("#mark_comment_txt").html(page.comment);
         }*/
-        this.pageCount++;
-        this.pages.push(page);
+         this.pageCount++;
+         this.pages.push(page);
         // $("#mnote_hold_bt").css("display","flex");
  
      },
@@ -1011,7 +914,6 @@ var MNote_instance=cc.Class.extend({
             var canvas=$(this).find(".canvas_draw")[0];
             page.width=canvas.width;
             page.height=canvas.height;
-            page.id=Number($(this).attr("data"));
             
           // console.log("export page "+canvas.pagetype);
             if(canvas.pagetype==0){
@@ -1101,47 +1003,6 @@ var MNote_instance=cc.Class.extend({
          //remove speicfy page
  
      },
-     moveUpPage:function(pageid){
-        var parentNode=document.getElementById("mnote_pages");
-        var childNodes=parentNode.childNodes;
-        var indexMove=-1;
-        for(var i=0;i<childNodes.length;i++){
-            if(childNodes[i].id=="page_"+pageid){
-                indexMove=i;
-            }
-        }
-        
-        if(indexMove>1){
-            var node1=childNodes[indexMove-1];
-            var node=childNodes[indexMove];
-            if($(node1).hasClass("page")){
-                parentNode.insertBefore(node, node1);
-            }
-        }
-     },
-     moveDownPage:function(pageid){
-        var parentNode=document.getElementById("mnote_pages");
-        var childNodes=parentNode.childNodes;
-        var indexMove=-1;
-        for(var i=0;i<childNodes.length;i++){
-            console.log("childNodeId "+childNodes[i].id);
-            if(childNodes[i].id=="page_"+pageid){
-                indexMove=i;
-            }
-        }
-        
-        if(indexMove<childNodes.length-1){
-            //console.log("moveDownPage "+pageid+":"+indexMove);
-            var node1=childNodes[indexMove+1];
-            var node=childNodes[indexMove];
-            if($(node1).hasClass("page")){
-                console.log("moveDownPage "+pageid+":"+indexMove);
-                parentNode.insertBefore(node1, node);
-            }
-        }
-     },
-
-
      resizePage:function(id,width,height,img){
          //
          console.log("resize page "+id+":"+width+":"+height+":"+img);
@@ -1189,24 +1050,12 @@ var MNote_instance=cc.Class.extend({
         //resize objs layer
         if(this.mnotedata.mode=="edit") $("#mnote_mark").css("top",($(this.note_pages).height()+40)+"px");
         //$("#mnote_mark").css("top","0px");
+         $(this.note_container).height($(this.note_pages).height()*this.pageScale+1.5*window.innerHeight);
 
-        $(this.note_container).height($(this.note_pages).height()*this.pageScale+1.5*window.innerHeight);
-        if (this.mnotedata.mode=="edit" && getOs()=="web"){
-            $(this.note_container).height($(this.note_container).height()+300);
-        }
 
          //rotate image bg 
-         
-      //       var bgro=(isNaN(Number(this.mnotedata.pages[id].rotation)))? 0:Number(this.mnotedata.pages[id].rotation);
-            var pageObj=null;
-            for(var i=0;i<this.mnotedata.pages.length;i++){
-                if(this.mnotedata.pages[i].id==id) pageObj=this.mnotedata.pages[i];
-            }
-            var bgro=0;
-            if(pageObj){
-                bgro=(isNaN(Number(pageObj.rotation)))? 0:Number(pageObj.rotation);
-            }
-
+         //if(this.mnotedata.pages[id]){
+             var bgro=(isNaN(Number(this.mnotedata.pages[id].rotation)))? 0:Number(this.mnotedata.pages[id].rotation);
             // var img=document.getElementById("image_bg_"+id);//$(divpage).find(".page_bg").find("img")[0];
             // console.log('get image '+img);  
              var btEditBg=$(divpage).find(".bt-edit-bg");
@@ -1219,48 +1068,17 @@ var MNote_instance=cc.Class.extend({
                 if(this.mnotedata.mode=="edit"){
                     $(btEditBg).css("display","block");
                 }
-                var self=this;
-                $(btEditBg).on("touchend mouseup",function(e){
-                    //this.moveUpPage(Number($(btEditBg).parent().attr("data")));
-                   /* console.log($("#mnote_menu_edit_bg").css("display"));
-                    if($("#mnote_menu_edit_bg").css("display")=="block"){
-                        $("#mnote_menu_edit_bg").css("display","none");
-                    }else{
-                        $("#mnote_menu_edit_bg").attr("data",Number($(btEditBg).parent().attr("data")));
-                        $("#mnote_menu_edit_bg").css("display","block");
-                        $("#mnote_menu_edit_bg").css("top",(e.pageY-160)+"px");
-                        $("#mnote_menu_edit_bg").css("left",(e.pageX-270)+"px");
-                    }*/
-                    if($(this).attr("data")=="rotate"){
-                        self.rotateBgPage(Number($(this).parent().attr("data")));
-                    }else{
-                        self.moveUpPage(Number($(this).parent().attr("data")));
-                    }
-
-
-                    e.preventDefault();
-                    e.stopPropagation();
-                    return;
-                  /*  var bgro=parseInt($(img).attr("rotation"));
+                $(btEditBg).on("touchend mouseup",(e)=>{
+                    var bgro=parseInt($(img).attr("rotation"));
                     bgro-=90;
                    // console.log("rotate to "+bgro);
                     if(bgro<=-360) bgro=0;
                     this.rotateBgImage(img,bgro);
-                     */
+                    e.preventDefault();
+                    e.stopPropagation();
                 })
             }
-
-            
-            
          //}
-     },
-     rotateBgPage:function(pageid){
-        var img=document.getElementById("image_bg_"+pageid);
-        var bgro=parseInt($(img).attr("rotation"));
-        bgro-=90;
-        // console.log("rotate to "+bgro);
-        if(bgro<=-360) bgro=0;
-        this.rotateBgImage(img,bgro);
      },
 
      rotateBgImage:function(img,rot){
@@ -1399,8 +1217,8 @@ var MNote_instance=cc.Class.extend({
                     
                     ctx.lineCap = 'round';
                     ctx.lineJoin = 'round';
-                    ctx.strokeMiterLimit=1;
-                    //ctx.shadowColor = "rgba(0,0,0,.5)";
+                    ctx.strokeMiterLimit=10;
+                    ctx.shadowColor = "rgba(0,0,0,.5)";
                     ctx.globalAlpha=this.currDrawStyle.alpha;
                     ctx.strokeStyle=this.currDrawStyle.strokeStyle;
                     ctx.lineWidth=this.currDrawStyle.lineWidth;
@@ -1684,11 +1502,11 @@ var MNote_instance=cc.Class.extend({
      clickCanvas:function(canvas){
         cc.log("click canvas "+canvas.index+":"+canvas.endx+":"+canvas.endy+":"+this.staticTextConfig.correctWidth/2);
         if(this.mode==this.MODE_NORMAL){
-            this.addStaticText(canvas.index,"correct",canvas.endx-30,canvas.endy-this.staticTextConfig.correctHeight/2);
+            this.addStaticText(canvas.index,"correct",canvas.endx-this.staticTextConfig.correctWidth/2,canvas.endy-this.staticTextConfig.correctHeight/2);
         }
         if(this.mode==this.MODE_DRAWRING){
             if(this.currBrush!=this.BRUSH_TEXT && !canvas.endmovefar){
-                this.addStaticText(canvas.index,"correct",canvas.endx-30,canvas.endy-this.staticTextConfig.correctHeight/2);
+                this.addStaticText(canvas.index,"correct",canvas.endx-this.staticTextConfig.correctWidth/2,canvas.endy-this.staticTextConfig.correctHeight/2);
             }
         }
         
@@ -1696,11 +1514,11 @@ var MNote_instance=cc.Class.extend({
      doubleClickCanvas:function(canvas){
         cc.log("double click canvas "+canvas.index+":"+canvas.endx+":"+canvas.endy);
         if(this.mode==this.MODE_NORMAL){
-            this.addStaticText(canvas.index,"wrong",canvas.endx-30,canvas.endy-this.staticTextConfig.wrongHeight/2);
+            this.addStaticText(canvas.index,"wrong",canvas.endx-this.staticTextConfig.wrongWidth/2,canvas.endy-this.staticTextConfig.wrongHeight/2);
         }
         if(this.mode==this.MODE_DRAWRING){
             if(this.currBrush!=this.BRUSH_TEXT && !canvas.endmovefar){
-                this.addStaticText(canvas.index,"wrong",canvas.endx-30,canvas.endy-this.staticTextConfig.wrongHeight/2);
+                this.addStaticText(canvas.index,"wrong",canvas.endx-this.staticTextConfig.wrongWidth/2,canvas.endy-this.staticTextConfig.wrongHeight/2);
             }
         }    
      },
@@ -2343,7 +2161,6 @@ var MNote_instance=cc.Class.extend({
     /**** menu bottom */
      initMenuBottom:function(){
         var arrColor=["green","red","purple","#3f51b5","teal","#03a9f4","yellow","#cddc39","cyan","#ffc107","#795548","#424242"];
-
         $("#menu_bottom_2_content").empty();
         for(var i=0;i<arrColor.length;i++){
             var child=$('<div class="btn-color-bottom"><div data="'+arrColor[i]+'" class="btn-color-bottom-small  btn-small btn-floating btn-flat waves-effect waves-light" style="background-color:'+arrColor[i]+'"></div></div>');
@@ -2724,17 +2541,11 @@ var MNote_instance=cc.Class.extend({
     },
     showMenuText:function(){
         $("#mnote_menu_text").css("display","block");
-        $("#mnote_setting_zoom_out").css("display","none");
-        $("#mnote_setting_zoom_in").css("display","none");
     },
     hideMenuText:function(){
         $("#mnote_menu_text").css("display","none");
         $('#menu_text_slider').css("display","none");
         $("#menu_text_font").css("display","none");
-        if(!is_touch_device()){
-            $("#mnote_setting_zoom_out").css("display","block");
-            $("#mnote_setting_zoom_in").css("display","block");
-        }
     },
     _addText:function(pageId,text,x,y,style){
         var minWidth=(is_touch_device())? 200:80;
@@ -2972,7 +2783,7 @@ var MNote_instance=cc.Class.extend({
             var pointfix=(10*this.countRight/markCount).toFixed(1);
             var strmark=(this.mnotedata.hideMark==true)? "":' = '+pointfix+' Điểm ';
             $("#mnote_mark_result").html('Trả lời đúng '+this.countRight+' / '+markCount+ strmark+'.    <span style="color: green;margin-left: 20px;">đ : '+this.countRight+' </span> <span style="color: red;margin-left:20px ;">s : '+this.countWrong+'</span>');
-            this.point=(value!=undefined && value!=null)? value:pointfix;
+            this.point=(value)? value:pointfix;
         }else{
             $("#mnote_mark_result").html("Chưa có số câu đúng , câu sai ");
             this.point=value;
@@ -3013,6 +2824,7 @@ var MNote_instance=cc.Class.extend({
         })
         var self=this;
         $("#mark_comment_txt").on("input",function(e){
+           
             self.resizeTxtComment();
         });
         for(var i=10;i>=0;i--){
@@ -3026,6 +2838,8 @@ var MNote_instance=cc.Class.extend({
         $("#mnote_mark_chose").on("touchstart",(e)=>{
             e.preventDefault();
         })
+
+        
         $(".btn-mark-chose-bt").each(function(){
             
             self.addTouchTap($(this),()=>{
@@ -3046,7 +2860,6 @@ var MNote_instance=cc.Class.extend({
             e.preventDefault();
         })
         var input=$("#switch_hide_mark").find("input")[0];
-
         $(input).on("change",function(e){
             if(this.checked){
                 self.showMark();
@@ -3111,7 +2924,7 @@ var MNote_instance=cc.Class.extend({
         $("#mnote_mark_comment").css("width","100%");
         $("#mnote_mark_chose").css("display","none");
         try{
-            localStorage.setItem("hideMark","true");
+            localStorage.setItem("hideMark",true);
         }catch(e){
             console.log("localstorage not support");
         }
@@ -3124,7 +2937,7 @@ var MNote_instance=cc.Class.extend({
         $("#mnote_mark_comment").css("width","65%");
         $("#mnote_mark_chose").css("display","block");
         try{
-            localStorage.setItem("hideMark","false");
+            localStorage.setItem("hideMark",false);
         }catch(e){
             console.log("localstorage not support");
         }
@@ -3135,7 +2948,7 @@ var MNote_instance=cc.Class.extend({
          var txtCommentH=$(txtComment).height();
          txtCommentH=(txtCommentH<200)? 200:txtCommentH;
          var nh=txtCommentH+130+$("#mnote_mark_emoji").height();
-         if(this.mnotedata && this.mnotedata.mode=="view") nh+=80;
+         if(this.mnotedata.mode!="edit") nh+=80;
          $("#mnote_mark_point").css("height",nh+"px");
          $("#mark_number_txt").css("margin-top",(nh-68-150)/2+"px"); 
          var mt=$("#mnote_mark_emoji_container").height()-50;
@@ -3205,8 +3018,8 @@ var MNote_instance=cc.Class.extend({
             urlImgWrong:"images/rightwrong/wrong1.png",
             textCorrect:"đ",
             textWrong:"s",
-            useCorrectText:true,
-            useWrongText:true,
+            useCorrectText:false,
+            useWrongText:false,
             correctWidth:50,
             correctHeight:50,
             wrongWidth:50,
@@ -3216,14 +3029,10 @@ var MNote_instance=cc.Class.extend({
             fontColor:"red"
         }
 
-
         try{
             var localStaticConfig=localStorage.getItem("staticTextConfig");
             if(localStaticConfig){
                 this.staticTextConfig=JSON.parse(localStaticConfig);
-            }else{
-                //getlocalstorage from iframe
-                document.getElementById("ifclasslive").src="https://classlive.stume.net/localstorage.html"
             }
         }catch(e){
             console.log("error parse local staticTextConfig");
@@ -3432,59 +3241,8 @@ var MNote_instance=cc.Class.extend({
          return pos;
 
      },
+
      exportPdf:function(){
-        showLoading();
-        this.zipExport = new JSZip();
-        $(".bt-edit-bg").css("display","none");
-
-        setTimeout(()=>{
-            this.exportPdfPage(0);
-        },300);
-        
-        
-       // zip.file("smile.gif", imgData, {base64: true});
-      /*  zip.generateAsync({type:"blob"}).then(function(content) {
-            // see FileSaver.js
-            var filename=this.mnotedata.classname+"_"+this.mnotedata.fullname+"_"+this.mnotedata.homeworkTime+"_"+this.mnotedata.homework;
-            saveAs(content, filename+".zip");
-        });*/
-     },
-     exportPdfPage:function(index){
-         console.log("export page "+index);
-         if(index<0) index=0;
-         if(index>=this.pageCount){
-             //finish export page
-             html2canvas(document.querySelector("#mnote_mark_point"),{
-                useCORS: true,
-            }).then(canvas => {
-                var base64=canvas.toDataURL("image/jpeg",70);
-                //if(index==0) console.log(base64);
-                base64=base64.substr(23);
-                this.zipExport.file("diem_loiphe.jpg",base64,{base64:true});
-
-                var filename=this.mnotedata.classname+"_"+this.mnotedata.fullname+"_"+this.mnotedata.homeworkTime+"_"+this.mnotedata.homework;
-                this.zipExport.generateAsync({type:"blob"}).then(function(content) {
-                    // see FileSaver.js
-                    hideLoading();
-                    $(".bt-edit-bg").css("display","block");
-                    saveAs(content, filename+".zip");
-                })
-                //this.exportPdfPage(index+1);
-            })
-            return;
-         }
-
-        html2canvas(document.querySelector("#page_"+index),{
-            useCORS: true,
-        }).then(canvas => {
-            var base64=canvas.toDataURL("image/jpeg",70);
-            //if(index==0) console.log(base64);
-            base64=base64.substr(23);
-            this.zipExport.file("trang_"+index+".jpg",base64,{base64:true});
-            this.exportPdfPage(index+1);
-        })
-     },
-     exportPdf_:function(){
         showLoading();
         //switch to view mode to export 
         $("#mnote_mark_chose").css("display","none");
@@ -3619,25 +3377,23 @@ function loadCss(){
 }
 
 function startApp(){
-    
     $("#root").css("display","block");
     mnote=MNote.getInstance();
-
-   // var arrPage=[{"width":750,"height":1334,"id":1,"backgroundImage":"images/test1.jpg?t=2","rotation":0,"staticText":[],"objText":[{"x":406,"y":454,"value":"Vbjutg<div>Vhhjj</div>","textStyle":{"font":"handwriting_font","size":40,"align":"left","color":"red","fill":false}},{"x":225,"y":942,"value":"Ghhrt<div>Ghhj</div>","textStyle":{"font":"handwriting_font","size":40,"align":"center","color":"red","fill":true}}]},{"width":750,"height":1334,"id":0,"backgroundImage":"images/test1.jpg?t=2","rotation":0,"staticText":[{"x":363,"y":808,"value":"correct"},{"x":485,"y":663,"value":"correct"},{"x":451,"y":837,"value":"correct"},{"x":324,"y":1026,"value":"correct"},{"x":476,"y":976,"value":"wrong"},{"x":544,"y":831,"value":"wrong"},{"x":439,"y":1140,"value":"wrong"},{"x":88,"y":836,"value":"wrong"},{"x":256,"y":594,"value":"wrong"},{"x":242,"y":748,"value":"correct"}],"objText":[]},{"width":750,"height":1334,"id":3,"backgroundImage":"images/test1.jpg?t=2","rotation":0,"staticText":[],"objText":[]},{"width":750,"height":1334,"id":2,"backgroundImage":"images/test3.jpg?t=2","rotation":0,"staticText":[],"objText":[]},{"width":750,"height":1334,"id":4,"backgroundImage":"images/test1.jpg?t=2","rotation":0,"staticText":[],"objText":[]},{"width":750,"height":1334,"id":5,"backgroundImage":"images/test1.jpg?t=2","rotation":0,"staticText":[],"objText":[]}];
-   // var arrPage=[{"backgroundImage":"https://player.vimeo.com/video/606881153"},{"backgroundImage":"images/test1.jpg"}]
+   // var arrPage=[{"backgroundImage":"images/test1.jpg?t=2","width":750,"height":1334,"staticText":[{"x":363,"y":808,"value":"correct"},{"x":485,"y":663,"value":"correct"},{"x":451,"y":837,"value":"correct"},{"x":324,"y":1026,"value":"correct"},{"x":476,"y":976,"value":"wrong"},{"x":544,"y":831,"value":"wrong"},{"x":439,"y":1140,"value":"wrong"},{"x":88,"y":836,"value":"wrong"},{"x":256,"y":594,"value":"wrong"},{"x":242,"y":748,"value":"correct"}],"objText":[]},{"backgroundImage":"images/test1.jpg?t=2","width":750,"height":450,"staticText":[],"objText":[{"x":406,"y":454,"value":"Vbjutg<div>Vhhjj</div>","textStyle":{"font":"handwriting_font","size":40,"align":"left","color":"red","fill":false}},{"x":225,"y":942,"value":"Ghhrt<div>Ghhj</div>","textStyle":{"font":"handwriting_font","size":40,"align":"center","color":"red","fill":true}}]},{"backgroundImage":"images/test3.jpg?t=2","width":750,"height":1334,"staticText":[],"objText":[]},{"backgroundImage":"images/test1.jpg?t=2"},{"backgroundImage":"images/test1.jpg?t=2"},{"backgroundImage":"images/test1.jpg?t=2"}]
+   // var arrPage=[{"backgroundImage":"images/test.mp3"},{"backgroundImage":"images/test1.jpg"}]
    /* var mnotedata={
         pages:arrPage,
         commentEmoji:["images/emoji/emoji2.gif","images/emoji/emoji3.gif","images/emoji/emoji4.gif","images/emoji/emoji5.gif"],
         
         mode:"edit"
     }*/
-    
 
-    //var mnotedata={"cmd":"initMNote","pages":arrPage,"answer_obj":{"id":263170,"homeworkId":20310,"studentId":385558,"note":null,"resendNote":null,"point":0,"result":null,"resultExams":null,"files":"[{\"name\":\"Screen Shot 2021-02-18 at 7.29.06 PM.png\",\"path\":\"/storage_public/azota/fcadb3c7cc7f65d8152b72365a39bba6_3862c1badd5e4e4395f3855cf10817ce1614226256.png\",\"extension\":\"png\",\"mimes\":\"image/png\",\"size\":\"13593\",\"url\":\"https://cdn.azota.vn/api/download_public/storage_public/azota/fcadb3c7cc7f65d8152b72365a39bba6_3862c1badd5e4e4395f3855cf10817ce1614226256.png\"}]","testbankExams":"[]","confirmedAt":null,"createdAt":"2021-02-25T11:11:00","updatedAt":"2021-02-25T11:11:00","homework":null,"student":null},"student_obj":{"id":385558,"code":null,"fullName":"hunglt","birthday":"2021-02-25T00:00:00","gender":0,"classroomId":19804,"parentId":413863,"createdAt":"2021-02-25T11:10:50","updatedAt":"2021-02-25T11:10:50","classroom":{"id":19804,"name":"test lop","teacherId":413838,"countStudents":1,"status":true,"showAddStudent":1,"createdAt":"2021-02-25T11:10:13","updatedAt":"2021-02-25T11:10:13","teacher":null,"homeworks":[],"students":[]},"answers":[{"id":263170,"homeworkId":20310,"studentId":385558,"note":null,"resendNote":null,"point":0,"result":null,"resultExams":null,"files":"[{\"name\":\"Screen Shot 2021-02-18 at 7.29.06 PM.png\",\"path\":\"/storage_public/azota/fcadb3c7cc7f65d8152b72365a39bba6_3862c1badd5e4e4395f3855cf10817ce1614226256.png\",\"extension\":\"png\",\"mimes\":\"image/png\",\"size\":\"13593\",\"url\":\"https://cdn.azota.vn/api/download_public/storage_public/azota/fcadb3c7cc7f65d8152b72365a39bba6_3862c1badd5e4e4395f3855cf10817ce1614226256.png\"}]","testbankExams":"[]","confirmedAt":null,"createdAt":"2021-02-25T11:11:00","updatedAt":"2021-02-25T11:11:00","homework":null,"student":null}]},"classroom_obj":{"id":19804,"name":"test lop","teacherId":413838,"countStudents":1,"status":true,"showAddStudent":1,"createdAt":"2021-02-25T11:10:13","updatedAt":"2021-02-25T11:10:13","teacher":null,"homeworks":[],"students":[]},"homework_obj":{"id":20310,"hashId":"p3h3q6","name":"Bài tập","classroomId":19804,"content":"<p>B&agrave;i tập trong s&aacute;ch gi&aacute;o khoa số 2&nbsp;</p>","deadline":"2021-02-26T00:00:00","type":null,"count":1,"files":"null","testbankExams":"null","createdAt":"2021-02-25T11:10:28","updatedAt":"2021-02-26T10:14:35","classroom":null,"answers":[]},"mode":"view"}
-    //mnote.initNote(mnotedata);
+   // var mnotedata={"cmd":"initMNote","pages":arrPage,"answer_obj":{"id":263170,"homeworkId":20310,"studentId":385558,"note":null,"resendNote":null,"point":0,"result":null,"resultExams":null,"files":"[{\"name\":\"Screen Shot 2021-02-18 at 7.29.06 PM.png\",\"path\":\"/storage_public/azota/fcadb3c7cc7f65d8152b72365a39bba6_3862c1badd5e4e4395f3855cf10817ce1614226256.png\",\"extension\":\"png\",\"mimes\":\"image/png\",\"size\":\"13593\",\"url\":\"https://cdn.azota.vn/api/download_public/storage_public/azota/fcadb3c7cc7f65d8152b72365a39bba6_3862c1badd5e4e4395f3855cf10817ce1614226256.png\"}]","testbankExams":"[]","confirmedAt":null,"createdAt":"2021-02-25T11:11:00","updatedAt":"2021-02-25T11:11:00","homework":null,"student":null},"student_obj":{"id":385558,"code":null,"fullName":"hunglt","birthday":"2021-02-25T00:00:00","gender":0,"classroomId":19804,"parentId":413863,"createdAt":"2021-02-25T11:10:50","updatedAt":"2021-02-25T11:10:50","classroom":{"id":19804,"name":"test lop","teacherId":413838,"countStudents":1,"status":true,"showAddStudent":1,"createdAt":"2021-02-25T11:10:13","updatedAt":"2021-02-25T11:10:13","teacher":null,"homeworks":[],"students":[]},"answers":[{"id":263170,"homeworkId":20310,"studentId":385558,"note":null,"resendNote":null,"point":0,"result":null,"resultExams":null,"files":"[{\"name\":\"Screen Shot 2021-02-18 at 7.29.06 PM.png\",\"path\":\"/storage_public/azota/fcadb3c7cc7f65d8152b72365a39bba6_3862c1badd5e4e4395f3855cf10817ce1614226256.png\",\"extension\":\"png\",\"mimes\":\"image/png\",\"size\":\"13593\",\"url\":\"https://cdn.azota.vn/api/download_public/storage_public/azota/fcadb3c7cc7f65d8152b72365a39bba6_3862c1badd5e4e4395f3855cf10817ce1614226256.png\"}]","testbankExams":"[]","confirmedAt":null,"createdAt":"2021-02-25T11:11:00","updatedAt":"2021-02-25T11:11:00","homework":null,"student":null}]},"classroom_obj":{"id":19804,"name":"test lop","teacherId":413838,"countStudents":1,"status":true,"showAddStudent":1,"createdAt":"2021-02-25T11:10:13","updatedAt":"2021-02-25T11:10:13","teacher":null,"homeworks":[],"students":[]},"homework_obj":{"id":20310,"hashId":"p3h3q6","name":"Bài tập","classroomId":19804,"content":"<p>B&agrave;i tập trong s&aacute;ch gi&aacute;o khoa số 2&nbsp;</p>","deadline":"2021-02-26T00:00:00","type":null,"count":1,"files":"null","testbankExams":"null","createdAt":"2021-02-25T11:10:28","updatedAt":"2021-02-26T10:14:35","classroom":null,"answers":[]},"mode":"edit"}
+   // mnote.initNote(mnotedata);
+    //setTimeout(()=>{
+       
+    //},3000);
     
 }
 
 loadCss();
-
-

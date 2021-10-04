@@ -5,10 +5,10 @@
     <link rel="stylesheet" href="css/loading.css">
     
     <meta name="viewport" content="initial-scale=1,minimum-scale=1,maximum-scale=1,width=device-width,height=device-height,user-scalable=0">
-    <!--link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Sharp|Material+Icons+Round|Material+Icons+Two+Tone" rel="stylesheet"-->
-    <link href="css/video-js.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Sharp|Material+Icons+Round|Material+Icons+Two+Tone" rel="stylesheet">
+    <link href="https://vjs.zencdn.net/7.10.2/video-js.css" rel="stylesheet" />
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
     
     <link rel="stylesheet" href="css/mnote.css">
@@ -18,12 +18,10 @@
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/appPlatform.js"></script>
     <script src="js/panzoom.js"></script>
-    <script src="js/gsap.min.js"></script>
-    <script src="js/video.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script src="https://vjs.zencdn.net/7.10.2/video.min.js"></script>
     <script src="lib/mathquill.min.js"></script>
     <script src="lib/matheditor.js"></script>
-    <script src="js/jszip.min.js"></script>
-    <script src="js/FileSaver.js"></script>
     <script src="js/html2canvas.min.js"></script>
 </head>
 <body>
@@ -55,7 +53,7 @@
                                     </div>
                                     <div id="mnote_mark_comment">
                                         <div style="text-align: center;font-size: 39px;font-weight: bold;color: black;font-family: 'handwriting_font';"> Lời phê của giáo viên</div>
-                                        <textarea style="display: block;padding-right: 5px;" class="mnote_mark_point_txt" id="mark_comment_txt" placeholder="Nhập nhận xét ở đây"></textarea>
+                                        <textarea style="display: block;" class="mnote_mark_point_txt" id="mark_comment_txt" placeholder="Nhập nhận xét ở đây"></textarea>
                                         <div id="mnote_mark_emoji">
                                             <div id="mnote_mark_emoji_bt">
                                                   <img src="images/emoji/emoji.png" width="50" height="50">  
@@ -90,6 +88,8 @@
                                 <button id="btn_save_data" class="btn waves-effect waves-light red" type="submit" name="action">Lưu dữ liệu
                                     
                                 </button>
+
+                               
                             </div>
                     </div>
                 </div>
@@ -172,7 +172,7 @@
                         </div>
                         <div id="thick_slider">
                             <p style="margin:0px;margin-top: 5px;" class="range-field">
-                                <input id="thick_slider_input" type="range" min="1" max="25" />
+                                <input id="thick_slider_input" type="range" min="2" max="25" />
                             </p>
                         </div>
                     </div>
@@ -191,18 +191,10 @@
             <!--span>Chỉnh sửa</span-->
         </div>
         <div id="mnote_setting_bt" class="dropdown-trigger btn-floating waves-effect waves-light white lighten-2" data-target='mnote_setting_menu'> <i style="color:gray;font-size: 1.3em;" class="material-icons">menu</i></div>
-        <div id="mnote_setting_zoom_in" class="btn-floating waves-effect waves-light white lighten-2" > <i style="color:gray" class="material-icons">add</i></div>
-        <div id="mnote_setting_zoom_out" class="btn-floating waves-effect waves-light white lighten-2" > <i style="color:gray" class="material-icons">remove</i></div>
         <ul id='mnote_setting_menu' class='dropdown-content' style="display: none;">
             <li><a id="setting_menu_static_text">Cấu hình icon đúng/sai</a></li>
             <!--li><a id="setting_menu_mathtype">Mở soạn thảo công thức</a></li-->
-            <li><a onclick="exportPdf()">Tải ảnh bài tập thành từng trang</a></li>
-            <!--li><a onclick="exportPdf_()">Tải ảnh bài tập thành một trang</a></li-->
-        </ul>
-
-        <ul id='mnote_menu_edit_bg' class='dropdown-content' style="display: none;position:absolute;width: 250px;height: 130px;opacity: 1;">
-            <li><a id="mnote_menu_edit_bg_rotate">Xoay ảnh</a></li>
-            <li><a id="mnote_menu_edit_bg_moveup">Dịch chuyển lên trên</a></li>
+            <li><a onclick="exportPdf()">Tải ảnh bài tập</a></li>
         </ul>
 
         <div id="mnote_help">
@@ -319,6 +311,8 @@
 
                 </div>
             </div>
+            
+            
         </div>
 
         <div id="setting_static_text" style="display: none;">
@@ -384,13 +378,12 @@
             <img class="img_wrong" />
         </div>
     </div>
-    <iframe id="ifclasslive"  width="0" height="0" style="border:none"></iframe>
     <input style="display: none;" id="capture" type="file" accept="image/*;capture=camera">
     <div style="font-family: handwriting_font;" class="loading">Loading&#8230;</div>
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script>
         
-        var gl_ver="4.126";
+        var gl_ver="6.44";
         var arrJs=[
             "js/mnote.js"
         ]
