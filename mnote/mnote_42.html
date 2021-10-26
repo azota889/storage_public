@@ -79,9 +79,20 @@
                                         <span class="lever"></span>
                                         </label>
                                     </div>
-                                    <button style="margin-top:10px;height:45px" id="btn_resubmit" class="btn waves-effect waves-light red" type="submit" name="action">Yêu cầu nộp lại 
+
+                                    <button style="margin-top:10px;height:45px" id="btn_resubmit" class="btn waves-effect waves-light red" type="submit" name="action">Yêu cầu nộp lại  </button>
+                                    <div style="width: 250px;height: 45px;margin-left: 30px;margin-top:10px;">
+                                        <button style="height:45px;" id="btn_comment_font" class="btn waves-effect waves-light light green" type="submit" name="action">Kiểu chữ </button>
+                                        <ul id='txtCommnetFont' class='dropdown-content' style="display: none;z-index: 999999;opacity: 1;position: relative; margin-top: -245px;">
+                                            <li><a class="txtCommnetFont" value="font_chu_dep_z">Font chữ đẹp</a></li>
+                                            <li><a class="txtCommnetFont" value="font_chu_in">Font chữ thường</a></li>
+                                            <li><a class="txtCommnetFont" value="font_chu_in_nghieng">Font chữ nghiêng</a></li>
+                                            <li><a class="txtCommnetFont" value="font_chu_in_đam">Font chữ đậm</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <a id="bt_voice_text" class="btn-floating light green" style="margin-left: -120px;margin-top:10px;display: none;"><i class="material-icons">mic</i></a>
                                     
-                                    </button>
                                 </div>
                                 <div id="mnote_mark_chose">
                                     <!--span style="float: left;margin-left: 30px;font-family: handwriting_font;font-size: 40px;width:100%">Chọn điểm :</span-->
@@ -379,6 +390,9 @@
                 </div>
             </div>
         </div>
+
+        
+
         <div style="display: none;">
             <img class="img_correct" />
             <img class="img_wrong" />
@@ -390,9 +404,9 @@
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script>
         
-        var gl_ver="4.134";
+        var gl_ver="4.138";
         var arrJs=[
-            "js/mnote.js"
+            "js/mnote_42.js"
         ]
         var ver="ver_"+gl_ver;
         var opencvloaded=false;
