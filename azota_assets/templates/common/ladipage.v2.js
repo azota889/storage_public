@@ -135,7 +135,7 @@ document.querySelectorAll('*').forEach(function(node) {
         var user = localStorage.getItem('user_obj');
         var token = JSON.parse(user)['rememberToken'];
         const headers = { Authorization: 'Bearer ' + token };
-        var apiURL = `https://azota.vn/api/S3space/get_public_upload_url?file_name=${file['name']}&file_size=${file['size']}&minetype=${file['type']}`;
+        var apiURL = `https://azota.vn/api/S3space/get_public_upload_url_for_ladipage?file_name=${file['name']}&file_size=${file['size']}&minetype=${file['type']}`;
         jQuery.ajax({url:apiURL, headers: headers, success: function(result){
           var uploadUrl = result['data']['upload_url'];
           var urlCdn = result['data']['url'];
@@ -190,7 +190,7 @@ document.querySelectorAll('*').forEach(function(node) {
       var user = localStorage.getItem('user_obj');
       var token = JSON.parse(user)['rememberToken'];
       const headers = { Authorization: 'Bearer ' + token };
-      var apiURL = `https://azota.vn/api/S3space/get_public_upload_url?file_name=${file['name']}&file_size=${file['size']}&minetype=${file['type']}`;
+      var apiURL = `https://azota.vn/api/S3space/get_public_upload_url_for_ladipage?file_name=${file['name']}&file_size=${file['size']}&minetype=${file['type']}`;
       jQuery.ajax({url:apiURL, headers: headers, success: function(result){
         var uploadUrl = result['data']['upload_url'];
         var urlCdn = result['data']['url'];

@@ -3,7 +3,10 @@ window.addEventListener("click", handleClick);
 
 var testBankIframe = document.getElementById("testbank-iframe");
 
-const template = testBankIframe.contentWindow;
+var template;
+if (testBankIframe != null) {
+   template = testBankIframe.contentWindow;
+}
 
 if (template) {
   template.eval(`
