@@ -445,9 +445,9 @@ var MNote_instance=cc.Class.extend({
             if(localStorage){
                 var textStyle=localStorage.getItem("textStyle");
                 var drawStyle=localStorage.getItem("drawStyle");
-                console.log("get style "+textStyle+":"+drawStyle);
-                this.currDrawStyle=JSON.parse(drawStyle);
-                this.currTextStyle=JSON.parse(textStyle);
+                //console.log("get style "+textStyle+":"+drawStyle);
+                if(drawStyle!="" && drawStyle!=undefined && drawStyle!=null) this.currDrawStyle=JSON.parse(drawStyle);
+                if(textStyle!="" && textStyle!=undefined && textStyle!=null) this.currTextStyle=JSON.parse(textStyle);
             }
         }catch(e){
             console.log("exception "+e.toString());
