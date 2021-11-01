@@ -1248,8 +1248,8 @@ var MNote_instance=cc.Class.extend({
         mnotedata.point=mnotedata.point.replaceAll(",",".");
         if(mnotedata.point==undefined || mnotedata.point==null || mnotedata.point=="" || isNaN(Number(mnotedata.point))) mnotedata.point=0;
         mnotedata.hideMark=this.mnotedata.hideMark;
-        //if(this.mnotedata.hideMark) mnotedata.point=0
-        cc.log("EXPORT JSON "+JSON.stringify(mnotedata));
+        if(this.mnotedata.hideMark) mnotedata.point=0;
+       // //cc.log("EXPORT JSON "+JSON.stringify(mnotedata));
 
         return mnotedata;
      },
@@ -1487,7 +1487,7 @@ var MNote_instance=cc.Class.extend({
         
      },
      onCanvasTouchStart:function(event){
-        cc.log("touch start");
+        //cc.log("touch start");
         var canvas=event.currentTarget;
         var coor=this.getCoorTouchEvent(canvas,event);
 
@@ -1535,7 +1535,7 @@ var MNote_instance=cc.Class.extend({
         
      },
      onCanvasTouchMove:function(event){
-       // cc.log("touch move");
+       // //cc.log("touch move");
        var canvas=event.currentTarget;
        var canvasDraw=document.getElementById("canvasDraw_"+canvas.pageid);
        var coor=this.getCoorTouchEvent(canvas,event);
@@ -1668,7 +1668,7 @@ var MNote_instance=cc.Class.extend({
      },
      onCanvasTouchEnd:function(event){
         //alert("touch end");
-        cc.log("touch end");
+        //cc.log("touch end");
         var canvas=event.currentTarget;
         if(this.mode==this.MODE_NORMAL){
             this.onCanvasEnd(canvas);
@@ -1697,8 +1697,8 @@ var MNote_instance=cc.Class.extend({
      onCanvasEnd:function(canvas){
         var now=new Date().getTime();
         if(!canvas.downing) return;
-        cc.log("onCanvasEnd "+canvas.lastmovex+":"+canvas.downx+":"+canvas.lastmovey+":"+canvas.downy+":"+this.mode+":"+this.currBrush);
-        cc.log("onCanvasEnd "+canvas.lastmoveclientx+":"+canvas.downclientx+":"+canvas.lastmoveclienty+":"+canvas.downclienty+":"+this.mode+":"+this.currBrush);
+        //cc.log("onCanvasEnd "+canvas.lastmovex+":"+canvas.downx+":"+canvas.lastmovey+":"+canvas.downy+":"+this.mode+":"+this.currBrush);
+        //cc.log("onCanvasEnd "+canvas.lastmoveclientx+":"+canvas.downclientx+":"+canvas.lastmoveclienty+":"+canvas.downclienty+":"+this.mode+":"+this.currBrush);
         var needCheckTap=true;
         var currEndMode=this.mode;
         if(currEndMode==this.MODE_ENTER_TEXT){
@@ -1807,7 +1807,7 @@ var MNote_instance=cc.Class.extend({
                 if(canvas.endtime!=undefined){
                     if(now-canvas.endtime<200){
                         canvas.tapCount++;
-                        cc.log(canvas.tapCount+" multi click canvas "+canvas.index+":"+canvas.endx+":"+canvas.endy);
+                        //cc.log(canvas.tapCount+" multi click canvas "+canvas.index+":"+canvas.endx+":"+canvas.endy);
                         if(canvas.tapCount==2){
                             this.doubleClickCanvas(canvas);
                         }
@@ -1858,7 +1858,7 @@ var MNote_instance=cc.Class.extend({
      },
 
      clickCanvas:function(canvas){
-        cc.log("click canvas "+canvas.index+":"+canvas.endx+":"+canvas.endy+":"+this.staticTextConfig.correctWidth/2);
+        //cc.log("click canvas "+canvas.index+":"+canvas.endx+":"+canvas.endy+":"+this.staticTextConfig.correctWidth/2);
         if(this.mode==this.MODE_NORMAL){
             this.addStaticText(canvas.index,"correct",canvas.endx-30,canvas.endy-this.staticTextConfig.correctHeight/2);
         }
@@ -1870,7 +1870,7 @@ var MNote_instance=cc.Class.extend({
         
      },
      doubleClickCanvas:function(canvas){
-        cc.log("double click canvas "+canvas.index+":"+canvas.endx+":"+canvas.endy);
+        //cc.log("double click canvas "+canvas.index+":"+canvas.endx+":"+canvas.endy);
         if(this.mode==this.MODE_NORMAL){
             this.addStaticText(canvas.index,"wrong",canvas.endx-30,canvas.endy-this.staticTextConfig.wrongHeight/2);
         }
@@ -2058,13 +2058,13 @@ var MNote_instance=cc.Class.extend({
      setDrawStyle:function(style){
         var lastStrokeStyle=this.currDrawStyle.strokeStyle;
 
-        cc.log("setDrawStyle "+JSON.stringify(style));
+        //cc.log("setDrawStyle "+JSON.stringify(style));
 
         if(style.lineWidth) this.currDrawStyle.lineWidth=style.lineWidth;
         if(style.strokeStyle) this.currDrawStyle.strokeStyle=style.strokeStyle;
         if(style.alpha) this.currDrawStyle.alpha=style.alpha;
 
-        cc.log("setDrawStyle "+JSON.stringify(this.currDrawStyle)+":"+this.currBrush);
+        //cc.log("setDrawStyle "+JSON.stringify(this.currDrawStyle)+":"+this.currBrush);
         //bind ui menu color
 
         $("#btn_thick_preview").css("opacity",this.currDrawStyle.alpha);
@@ -2454,7 +2454,7 @@ var MNote_instance=cc.Class.extend({
             $(dom).attr("movefar",false);
 
             $("#bt_trash").css("display","none");
-            cc.log("pos up "+clientx+":"+clienty+":"+self.appWidth+":"+self.appHeight/2+":"+lasty);
+            //cc.log("pos up "+clientx+":"+clienty+":"+self.appWidth+":"+self.appHeight/2+":"+lasty);
             if(is_touch_device()){
                 if(clientx>self.appWidth/2-30 && clientx<self.appWidth/2+30 && clienty<70){
                     $(dom).remove();
@@ -2952,7 +2952,7 @@ var MNote_instance=cc.Class.extend({
         //calculate moveup min max text
         var self=this;
         $(divedit).blur(function(){
-            cc.log("on text lost focus");
+            //cc.log("on text lost focus");
             $(this).removeClass("focusing");
             $(this).css("border","none");
             if($(this).html().trim()==""){
@@ -2961,7 +2961,7 @@ var MNote_instance=cc.Class.extend({
             self.setMode(self.MODE_DRAWRING)
         });
         $(divedit).focus(function(e){
-            cc.log("on text focus");
+            //cc.log("on text focus");
             $(this).addClass("focusing");
             $(this).css("border","dashed 2px");
             self.setTextStyle(JSON.parse($(this).attr("styleText").replaceAll("'","\"")));
@@ -3304,7 +3304,8 @@ var MNote_instance=cc.Class.extend({
         $("#mnote_mark_number").css("display","none");
         $("#mnote_mark_comment").css("width","100%");
         $("#mnote_mark_chose").css("display","none");
-        this.mnotedata.point=0;
+       // this.mnotedata.point=0;
+       ////this.updateMark(0);
         if(notUpdate){
 
         }else{
@@ -3492,7 +3493,7 @@ var MNote_instance=cc.Class.extend({
             $(".correct").find("span").css("display","block");
             $(".correct").find("img").css("display","none");
 
-           // cc.log("static text setting "+JSON.stringify(this.staticTextConfig));
+           // //cc.log("static text setting "+JSON.stringify(this.staticTextConfig));
            try{
                 localStorage.setItem("staticTextConfig",JSON.stringify(this.staticTextConfig));
            }catch(e){
