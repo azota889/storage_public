@@ -1099,7 +1099,7 @@ var MNote_instance=cc.Class.extend({
                         console.log("on load image error");
                         var imgsrc=$(this).attr("src");
                         if(imgsrc.indexOf("https://azotacdn.studybymusic.com")>=0){
-                            imgsrc.replace("https://azotacdn.studybymusic.com","https://wewiin.nyc3.cdn.digitaloceanspaces.com");
+                            imgsrc=imgsrc.replaceAll("https://azotacdn.studybymusic.com","https://wewiin.nyc3.cdn.digitaloceanspaces.com");
                         }
                         console.log("load image :"+imgsrc);
                         $(this).attr("src",imgsrc+"?time="+new Date().getTime());
