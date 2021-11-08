@@ -1117,7 +1117,7 @@ var MNote_instance=cc.Class.extend({
                 }
                 setTimeout(()=>{
                     img.src=page.backgroundImage;
-                },100*Number(this.pageCount));
+                },400*Number(this.pageCount));
             }
          }else{
             var width=self.pageWidth;
@@ -1140,7 +1140,7 @@ var MNote_instance=cc.Class.extend({
              imgdraw.crossOrigin = "anonymous";
              setTimeout(()=>{
                 imgdraw.src=page.draw;
-             },100*Number(this.pageCount));
+             },400*Number(this.pageCount));
          }else{
             var canvas=document.getElementById("canvas_"+parseInt($(img).attr("pageid")));
                  if(canvas){
