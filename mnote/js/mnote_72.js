@@ -1124,9 +1124,6 @@ var MNote_instance=cc.Class.extend({
                         if(imgsrc.indexOf("https://azotacdn.studybymusic.com")>=0){
                            imgsrc= imgsrc.replace("https://azotacdn.studybymusic.com","https://wewiin.nyc3.cdn.digitaloceanspaces.com");
                         }
-                        if(imgsrc.indexOf("https://nextcdn.studybymusic.com")>=0){
-                            imgsrc= imgsrc.replace("https://nextcdn.studybymusic.com","https://239444185.e.cdneverest.net");
-                        }
                         
                         var self=this;
                         setTimeout(()=>{
@@ -1137,9 +1134,9 @@ var MNote_instance=cc.Class.extend({
                     $(this).attr("nl",Number($(this).attr("nl"))+1);
                 }
                 setTimeout(()=>{
-                    /*if(page.backgroundImage.indexOf("https://nextcdn.studybymusic.com")>=0){
+                    if(page.backgroundImage.indexOf("https://nextcdn.studybymusic.com")>=0){
                         page.backgroundImage= page.backgroundImage.replace("https://nextcdn.studybymusic.com","https://239444185.e.cdneverest.net");
-                    }*/
+                    }
                     img.src=page.backgroundImage;
                 },400*Number(this.pageCount));
             }
@@ -1169,10 +1166,6 @@ var MNote_instance=cc.Class.extend({
                     if(imgsrc.indexOf("https://azotacdn.studybymusic.com")>=0){
                        imgsrc= imgsrc.replace("https://azotacdn.studybymusic.com","https://wewiin.nyc3.cdn.digitaloceanspaces.com");
                     }
-
-                    if(imgsrc.indexOf("https://nextcdn.studybymusic.com")>=0){
-                       imgsrc= imgsrc.replace("https://nextcdn.studybymusic.com","https://239444185.e.cdneverest.net");
-                    }
                     
                     var self=this;
                     setTimeout(()=>{
@@ -1184,9 +1177,9 @@ var MNote_instance=cc.Class.extend({
             }
              imgdraw.crossOrigin = "anonymous";
              setTimeout(()=>{
-                /*if(page.draw.indexOf("https://nextcdn.studybymusic.com")>=0){
+                if(page.draw.indexOf("https://nextcdn.studybymusic.com")>=0){
                     page.draw= page.draw.replace("https://nextcdn.studybymusic.com","https://239444185.e.cdneverest.net");
-                }*/
+                }
                 imgdraw.src=page.draw;
              },400*Number(this.pageCount));
          }else{
