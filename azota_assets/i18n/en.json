@@ -256,12 +256,14 @@
   "lang_cms_auth_update_config_description": "Sửa cấu hình",
 
   "lang_core_invalid_captcha": "Thao tác quá nhiều, vui lòng thử lại sau vài phút",
-  
+
   "lang_cms_teacher_group_title": "Làm việc nhóm",
   "lang_cms_teacher_group_description": "Làm việc nhóm",
 
   "lang_cms_auth_gzip_tool_title": "Công cụ hỗ trợ Gzip",
   "lang_cms_auth_gzip_tool_description": "Công cụ hỗ trợ Gzip",
 
-  "lang_core_this_api_is_maintain": "Hệ thống đang bảo trì chức năng này"
+  "lang_core_this_api_is_maintain": "Hệ thống đang bảo trì chức năng này",
+
+  "lang_core_name_homework_length": "Tên bài tập không vượt qua 190 ký tự"
 }
