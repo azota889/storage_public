@@ -7,7 +7,6 @@
     this.style.height = 'auto';
     this.style.height = (this.scrollHeight) + 'px';
 });
-
 var globalInitMnote=false;
 function getOs(){
     var userAgent=navigator.userAgent.toLowerCase();
@@ -101,7 +100,7 @@ window.addEventListener("message", function (event) {
     if(event.data){
         if(event.data.cmd && event.data.cmd=="initMNote"){
            // if (event.data.cmd=="initMnote"){
-                //alert("init"+JSON.stringify(event.data));
+                alert("init"+JSON.stringify(event.data));
                 if(event.data.pages){
                     //mnote.addPages(event.data.pages);
                      mnote=MNote.getInstance();
