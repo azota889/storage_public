@@ -979,6 +979,7 @@ var MNote_instance=cc.Class.extend({
                     
                 }
 
+                alert("numPage "+this.pageCount);
                 setTimeout(()=>{
                     if(this.mnotedata.mode=="edit") $("#mnote_hold_bt").css("display","flex");
                 },500);  
