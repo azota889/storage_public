@@ -7,6 +7,7 @@
     this.style.height = 'auto';
     this.style.height = (this.scrollHeight) + 'px';
 });
+
 var globalInitMnote=false;
 function getOs(){
     var userAgent=navigator.userAgent.toLowerCase();
@@ -99,18 +100,22 @@ window.addEventListener("message", function (event) {
     //console.log("receive data "+JSON.stringify(event.data));
     if(event.data){
         if(event.data.cmd && event.data.cmd=="initMNote"){
-                //alert("init : "+JSON.stringify(event.data).length);
+           // if (event.data.cmd=="initMnote"){
                 if(event.data.pages && !window.globalInitMnote){
+                    //mnote.addPages(event.data.pages);
                     window.globalInitMnote=true;
-                   
                      mnote=MNote.getInstance();
                      if(mnote && mnote.mnotedata==null) {
-                        // //console.log("call initMNote")
-                        // alert("process");
                           mnote.initNote(event.data);   
                      }
+                  }
+            //}
+            /*if(event.data.cmd=="uploadImage"){
+                if(event.data.url && event.data.indexImage){
+                    mnote=MNote.getInstance();
+                    mnote.updateSaveImage(event.data.url,event.data.indexImage); 
                 }
-               // return;
+            }*/
             
         }
         if(event.data.cmd && event.data.cmd=="MNoteStaticText"){
@@ -119,7 +124,6 @@ window.addEventListener("message", function (event) {
             if(localStorage){
                 localStorage.setItem("staticTextConfig",JSON.stringify(mnote.staticTextConfig));
             }
-            //return;
         }
 
         if(event.data.cmd && event.data.cmd=="getMNoteJson"){
@@ -131,7 +135,6 @@ window.addEventListener("message", function (event) {
                //exportPdf_();
                //alert("Có lỗi xảy ra trong quá trình lưu dữ liệu , vui lòng liên hệ và gửi ảnh lỗi tới ban quản trị !");
            }
-           //return;
            
         }
     }  
@@ -310,10 +313,9 @@ var MNote_instance=cc.Class.extend({
         window.addEventListener("resize",()=>{
             this.onresize(window.innerWidth,window.innerHeight);
         })
-
         setTimeout(()=>{
             this.onresize(window.innerWidth,window.innerHeight,true);
-        },3000);
+        },2700)
 
         if(is_touch_device()){
             this.panzoom=panzoom(this.note_container, {
@@ -3827,12 +3829,11 @@ var MNote_instance=cc.Class.extend({
             }
         }
         
-        if(delay && this.appHeight==0){
-            //alert("in delay resize");
+        if(this.appHeight==0 && delay){
             if(is_touch_device() && height<200){
                 setTimeout(()=>{
-
-                },3000)
+                    this.onresize(window.innerWidth,window.innerHeight);
+                },3000);
             }
         }
 
@@ -3843,7 +3844,7 @@ var MNote_instance=cc.Class.extend({
         $(this.note_content).css("height",height+"px");
         $(this.note_pages).width(this.pageWidth);
         this.pageScale=($(this.note_content).width())/this.pageWidth;
-        if(this.pageScale==0) this.pageScale=0.5;
+        //this.pageScale=1;
         $(this.note_pages).css("transform","scale("+this.pageScale+")");
      }
 })
