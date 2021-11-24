@@ -99,17 +99,18 @@ window.addEventListener("message", function (event) {
     //console.log("receive data "+JSON.stringify(event.data));
     if(event.data){
         if(event.data.cmd && event.data.cmd=="initMNote"){
-           
-                alert("init"+JSON.stringify(event.data));
+                alert("init : "+JSON.stringify(event.data).length);
                 if(event.data.pages && !window.globalInitMnote){
                     window.globalInitMnote=true;
-                    alert("process");
+                   
                      mnote=MNote.getInstance();
                      if(mnote && mnote.mnotedata==null) {
                         // //console.log("call initMNote")
+                         alert("process");
                           mnote.initNote(event.data);   
                      }
                 }
+                return;
             
         }
         if(event.data.cmd && event.data.cmd=="MNoteStaticText"){
@@ -118,6 +119,7 @@ window.addEventListener("message", function (event) {
             if(localStorage){
                 localStorage.setItem("staticTextConfig",JSON.stringify(mnote.staticTextConfig));
             }
+            return;
         }
 
         if(event.data.cmd && event.data.cmd=="getMNoteJson"){
@@ -129,6 +131,7 @@ window.addEventListener("message", function (event) {
                //exportPdf_();
                //alert("Có lỗi xảy ra trong quá trình lưu dữ liệu , vui lòng liên hệ và gửi ảnh lỗi tới ban quản trị !");
            }
+           return;
            
         }
     }  
