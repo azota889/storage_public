@@ -99,24 +99,17 @@ window.addEventListener("message", function (event) {
     //console.log("receive data "+JSON.stringify(event.data));
     if(event.data){
         if(event.data.cmd && event.data.cmd=="initMNote"){
-           // if (event.data.cmd=="initMnote"){
+           
                 alert("init"+JSON.stringify(event.data));
-                if(event.data.pages){
-                    //mnote.addPages(event.data.pages);
+                if(event.data.pages && !window.globalInitMnote){
+                    window.globalInitMnote=true;
+                    alert("process");
                      mnote=MNote.getInstance();
-                     if(mnote && mnote.mnotedata==null && !globalInitMnote) {
+                     if(mnote && mnote.mnotedata==null) {
                         // //console.log("call initMNote")
-                          globalInitMnote=true;
                           mnote.initNote(event.data);   
                      }
-                  }
-            //}
-            /*if(event.data.cmd=="uploadImage"){
-                if(event.data.url && event.data.indexImage){
-                    mnote=MNote.getInstance();
-                    mnote.updateSaveImage(event.data.url,event.data.indexImage); 
                 }
-            }*/
             
         }
         if(event.data.cmd && event.data.cmd=="MNoteStaticText"){
