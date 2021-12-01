@@ -7,6 +7,7 @@
     this.style.height = 'auto';
     this.style.height = (this.scrollHeight) + 'px';
 });
+
 var globalInitMnote=false;
 function getOs(){
     var userAgent=navigator.userAgent.toLowerCase();
@@ -99,18 +100,22 @@ window.addEventListener("message", function (event) {
     //console.log("receive data "+JSON.stringify(event.data));
     if(event.data){
         if(event.data.cmd && event.data.cmd=="initMNote"){
-                //alert("init : "+JSON.stringify(event.data).length);
+           // if (event.data.cmd=="initMnote"){
                 if(event.data.pages && !window.globalInitMnote){
+                    //mnote.addPages(event.data.pages);
                     window.globalInitMnote=true;
-                   
                      mnote=MNote.getInstance();
                      if(mnote && mnote.mnotedata==null) {
-                        // //console.log("call initMNote")
-                        // alert("process");
                           mnote.initNote(event.data);   
                      }
+                  }
+            //}
+            /*if(event.data.cmd=="uploadImage"){
+                if(event.data.url && event.data.indexImage){
+                    mnote=MNote.getInstance();
+                    mnote.updateSaveImage(event.data.url,event.data.indexImage); 
                 }
-               // return;
+            }*/
             
         }
         if(event.data.cmd && event.data.cmd=="MNoteStaticText"){
@@ -119,7 +124,6 @@ window.addEventListener("message", function (event) {
             if(localStorage){
                 localStorage.setItem("staticTextConfig",JSON.stringify(mnote.staticTextConfig));
             }
-            //return;
         }
 
         if(event.data.cmd && event.data.cmd=="getMNoteJson"){
@@ -131,7 +135,6 @@ window.addEventListener("message", function (event) {
                //exportPdf_();
                //alert("Có lỗi xảy ra trong quá trình lưu dữ liệu , vui lòng liên hệ và gửi ảnh lỗi tới ban quản trị !");
            }
-           //return;
            
         }
     }  
@@ -310,10 +313,9 @@ var MNote_instance=cc.Class.extend({
         window.addEventListener("resize",()=>{
             this.onresize(window.innerWidth,window.innerHeight);
         })
-
         setTimeout(()=>{
             this.onresize(window.innerWidth,window.innerHeight,true);
-        },5000);
+        },2700)
 
         if(is_touch_device()){
             this.panzoom=panzoom(this.note_container, {
@@ -1237,14 +1239,16 @@ var MNote_instance=cc.Class.extend({
             page.height=canvas.height;
             page.id=Number($(this).attr("data"));
             
-          // //console.log("export page "+canvas.pagetype);
+            console.log("export page "+canvas.pagetype+":"+page.id+":"+canvas.pageid);
             if(canvas.pagetype==0){
                 var img=$(this).find("img")[0];
                 page.backgroundImage=$(img).attr("src");
                 page.rotation=parseInt($(img).attr("rotation"));
             }else{
                 ////console.log("export bg video "+self.mnotedata.pages[canvas.pageid].backgroundImage+":"+canvas.pageid)
-                page.backgroundImage=self.mnotedata.pages[canvas.pageid].backgroundImage;
+                var iframevideo=$(this).find("iframe")[0];
+                page.backgroundImage=iframevideo.src;
+                //page.backgroundImage=self.mnotedata.pages[canvas.pageid].backgroundImage;
             }
             
 
@@ -3827,8 +3831,12 @@ var MNote_instance=cc.Class.extend({
             }
         }
         
-        if(delay && this.appHeight==0){
-            alert("in delay resize");
+        if(this.appHeight==0 && delay){
+            if(is_touch_device() && height<200){
+                setTimeout(()=>{
+                    this.onresize(window.innerWidth,window.innerHeight);
+                },3000);
+            }
         }
 
          this.appWidth=width;
@@ -3838,8 +3846,13 @@ var MNote_instance=cc.Class.extend({
         $(this.note_content).css("height",height+"px");
         $(this.note_pages).width(this.pageWidth);
         this.pageScale=($(this.note_content).width())/this.pageWidth;
-        if(this.pageScale==0) this.pageScale=0.5;
+        //this.pageScale=1;
         $(this.note_pages).css("transform","scale("+this.pageScale+")");
+
+        $(this.note_container).height($(this.note_pages).height()*this.pageScale+1.5*window.innerHeight);
+        /*if (this.mnotedata.mode=="edit" && getOs()=="web"){
+            $(this.note_container).height($(this.note_container).height()+300);
+        }*/
      }
 })
 
@@ -3886,16 +3899,16 @@ function startApp(){
     mnote=MNote.getInstance();
 
    // var arrPage=[{"width":750,"height":1334,"id":1,"backgroundImage":"images/test1.jpg?t=2","rotation":0,"staticText":[],"objText":[{"x":406,"y":454,"value":"Vbjutg<div>Vhhjj</div>","textStyle":{"font":"handwriting_font","size":40,"align":"left","color":"red","fill":false}},{"x":225,"y":942,"value":"Ghhrt<div>Ghhj</div>","textStyle":{"font":"handwriting_font","size":40,"align":"center","color":"red","fill":true}}]},{"width":750,"height":1334,"id":0,"backgroundImage":"images/test1.jpg?t=2","rotation":0,"staticText":[{"x":363,"y":808,"value":"correct"},{"x":485,"y":663,"value":"correct"},{"x":451,"y":837,"value":"correct"},{"x":324,"y":1026,"value":"correct"},{"x":476,"y":976,"value":"wrong"},{"x":544,"y":831,"value":"wrong"},{"x":439,"y":1140,"value":"wrong"},{"x":88,"y":836,"value":"wrong"},{"x":256,"y":594,"value":"wrong"},{"x":242,"y":748,"value":"correct"}],"objText":[]},{"width":750,"height":1334,"id":3,"backgroundImage":"images/test1.jpg?t=2","rotation":0,"staticText":[],"objText":[]},{"width":750,"height":1334,"id":2,"backgroundImage":"images/test3.jpg?t=2","rotation":0,"staticText":[],"objText":[]},{"width":750,"height":1334,"id":4,"backgroundImage":"images/test1.jpg?t=2","rotation":0,"staticText":[],"objText":[]},{"width":750,"height":1334,"id":5,"backgroundImage":"images/test1.jpg?t=2","rotation":0,"staticText":[],"objText":[]}];
-   // var arrPage=[{"backgroundImage":"https://player.vimeo.com/video/606881153"},{"backgroundImage":"images/test1.jpg"}]
-   /* var mnotedata={
+   // var arrPage=[{"width":750,"height":1334,"id":1,"backgroundImage":"images/test1.jpg","rotation":0,"staticText":[{"x":254,"y":1003,"value":"correct"},{"x":402,"y":974,"value":"correct"},{"x":449,"y":1109,"value":"correct"},{"x":602,"y":1188,"value":"correct"},{"x":369,"y":1188,"value":"correct"}],"objText":[]},{"width":750,"height":450,"id":0,"backgroundImage":"https://player.vimeo.com/video/606881153","staticText":[],"objText":[]}];
+    /*var mnotedata={
         pages:arrPage,
         commentEmoji:["images/emoji/emoji2.gif","images/emoji/emoji3.gif","images/emoji/emoji4.gif","images/emoji/emoji5.gif"],
         
         mode:"edit"
     }*/
 
-   // var mnotedata={"cmd":"initMNote","pages":arrPage,"answer_obj":{"id":263170,"homeworkId":20310,"studentId":385558,"note":null,"resendNote":null,"point":0,"result":null,"resultExams":null,"files":"[{\"name\":\"Screen Shot 2021-02-18 at 7.29.06 PM.png\",\"path\":\"/storage_public/azota/fcadb3c7cc7f65d8152b72365a39bba6_3862c1badd5e4e4395f3855cf10817ce1614226256.png\",\"extension\":\"png\",\"mimes\":\"image/png\",\"size\":\"13593\",\"url\":\"https://cdn.azota.vn/api/download_public/storage_public/azota/fcadb3c7cc7f65d8152b72365a39bba6_3862c1badd5e4e4395f3855cf10817ce1614226256.png\"}]","testbankExams":"[]","confirmedAt":null,"createdAt":"2021-02-25T11:11:00","updatedAt":"2021-02-25T11:11:00","homework":null,"student":null},"student_obj":{"id":385558,"code":null,"fullName":"hunglt","birthday":"2021-02-25T00:00:00","gender":0,"classroomId":19804,"parentId":413863,"createdAt":"2021-02-25T11:10:50","updatedAt":"2021-02-25T11:10:50","classroom":{"id":19804,"name":"test lop","teacherId":413838,"countStudents":1,"status":true,"showAddStudent":1,"createdAt":"2021-02-25T11:10:13","updatedAt":"2021-02-25T11:10:13","teacher":null,"homeworks":[],"students":[]},"answers":[{"id":263170,"homeworkId":20310,"studentId":385558,"note":null,"resendNote":null,"point":0,"result":null,"resultExams":null,"files":"[{\"name\":\"Screen Shot 2021-02-18 at 7.29.06 PM.png\",\"path\":\"/storage_public/azota/fcadb3c7cc7f65d8152b72365a39bba6_3862c1badd5e4e4395f3855cf10817ce1614226256.png\",\"extension\":\"png\",\"mimes\":\"image/png\",\"size\":\"13593\",\"url\":\"https://cdn.azota.vn/api/download_public/storage_public/azota/fcadb3c7cc7f65d8152b72365a39bba6_3862c1badd5e4e4395f3855cf10817ce1614226256.png\"}]","testbankExams":"[]","confirmedAt":null,"createdAt":"2021-02-25T11:11:00","updatedAt":"2021-02-25T11:11:00","homework":null,"student":null}]},"classroom_obj":{"id":19804,"name":"test lop","teacherId":413838,"countStudents":1,"status":true,"showAddStudent":1,"createdAt":"2021-02-25T11:10:13","updatedAt":"2021-02-25T11:10:13","teacher":null,"homeworks":[],"students":[]},"homework_obj":{"id":20310,"hashId":"p3h3q6","name":"Bài tập","classroomId":19804,"content":"<p>B&agrave;i tập trong s&aacute;ch gi&aacute;o khoa số 2&nbsp;</p>","deadline":"2021-02-26T00:00:00","type":null,"count":1,"files":"null","testbankExams":"null","createdAt":"2021-02-25T11:10:28","updatedAt":"2021-02-26T10:14:35","classroom":null,"answers":[]},"mode":"edit"}
-   // mnote.initNote(mnotedata);
+    //var mnotedata={"cmd":"initMNote","pages":arrPage,"answer_obj":{"id":263170,"homeworkId":20310,"studentId":385558,"note":null,"resendNote":null,"point":0,"result":null,"resultExams":null,"files":"[{\"name\":\"Screen Shot 2021-02-18 at 7.29.06 PM.png\",\"path\":\"/storage_public/azota/fcadb3c7cc7f65d8152b72365a39bba6_3862c1badd5e4e4395f3855cf10817ce1614226256.png\",\"extension\":\"png\",\"mimes\":\"image/png\",\"size\":\"13593\",\"url\":\"https://cdn.azota.vn/api/download_public/storage_public/azota/fcadb3c7cc7f65d8152b72365a39bba6_3862c1badd5e4e4395f3855cf10817ce1614226256.png\"}]","testbankExams":"[]","confirmedAt":null,"createdAt":"2021-02-25T11:11:00","updatedAt":"2021-02-25T11:11:00","homework":null,"student":null},"student_obj":{"id":385558,"code":null,"fullName":"hunglt","birthday":"2021-02-25T00:00:00","gender":0,"classroomId":19804,"parentId":413863,"createdAt":"2021-02-25T11:10:50","updatedAt":"2021-02-25T11:10:50","classroom":{"id":19804,"name":"test lop","teacherId":413838,"countStudents":1,"status":true,"showAddStudent":1,"createdAt":"2021-02-25T11:10:13","updatedAt":"2021-02-25T11:10:13","teacher":null,"homeworks":[],"students":[]},"answers":[{"id":263170,"homeworkId":20310,"studentId":385558,"note":null,"resendNote":null,"point":0,"result":null,"resultExams":null,"files":"[{\"name\":\"Screen Shot 2021-02-18 at 7.29.06 PM.png\",\"path\":\"/storage_public/azota/fcadb3c7cc7f65d8152b72365a39bba6_3862c1badd5e4e4395f3855cf10817ce1614226256.png\",\"extension\":\"png\",\"mimes\":\"image/png\",\"size\":\"13593\",\"url\":\"https://cdn.azota.vn/api/download_public/storage_public/azota/fcadb3c7cc7f65d8152b72365a39bba6_3862c1badd5e4e4395f3855cf10817ce1614226256.png\"}]","testbankExams":"[]","confirmedAt":null,"createdAt":"2021-02-25T11:11:00","updatedAt":"2021-02-25T11:11:00","homework":null,"student":null}]},"classroom_obj":{"id":19804,"name":"test lop","teacherId":413838,"countStudents":1,"status":true,"showAddStudent":1,"createdAt":"2021-02-25T11:10:13","updatedAt":"2021-02-25T11:10:13","teacher":null,"homeworks":[],"students":[]},"homework_obj":{"id":20310,"hashId":"p3h3q6","name":"Bài tập","classroomId":19804,"content":"<p>B&agrave;i tập trong s&aacute;ch gi&aacute;o khoa số 2&nbsp;</p>","deadline":"2021-02-26T00:00:00","type":null,"count":1,"files":"null","testbankExams":"null","createdAt":"2021-02-25T11:10:28","updatedAt":"2021-02-26T10:14:35","classroom":null,"answers":[]},"mode":"edit"}
+    //mnote.initNote(mnotedata);
 }
 
 loadCss();
