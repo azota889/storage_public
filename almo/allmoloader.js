@@ -8,5 +8,5 @@ aztExam.loadMonitor=function(callback){
     }
     js.src = "https://azota889.github.io/storage_public/almo/allmo.js?ver="+new Date().getTime();
     js.async = true;
-    document.header.appendChild(js);
+    document.head.appendChild(js);
 }
