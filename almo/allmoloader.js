@@ -6,7 +6,7 @@ aztExam.loadMonitor=function(callback){
     };
     js.onerror=()=>{
     }
-    js.src = "https://azota889.github.io/storage_public/almo/allmo.js?ver=0.44?ver="+new Date().getTime();
+    js.src = "https://azota889.github.io/storage_public/almo/allmo.js?ver="+new Date().getTime();
     js.async = true;
     document.body.appendChild(js);
 }
