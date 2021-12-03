@@ -53,7 +53,7 @@ function init(){
 }
 createFileFromUrl = function(path, url, callback) {
     let request = new XMLHttpRequest();
-    request.open('GET', url, true);
+    request.open('GET', "https://azota889.github.io/storage_public/almo/"+url, true);
     request.responseType = 'arraybuffer';
     request.onload = function(ev) {
         request = this;
@@ -143,4 +143,4 @@ function detectEye(obj){
         }
     });
 }
-importScripts("opencv.js");
+importScripts("https://azota889.github.io/storage_public/almo/opencv.js");
