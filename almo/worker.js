@@ -6,6 +6,8 @@ function log(str){
 var opencvloaded=false;
 var isInit=false;
 var isProcessing=false;
+var urlBase="https://azota889.github.io/storage_public/almo/";
+//var urlBase="";
 var checkOpencv=setInterval(()=>{
     if(cv!=null && cv.Mat!=null && cv.Mat!=undefined && cv.CascadeClassifier!=undefined){
         clearInterval(checkOpencv);
@@ -38,7 +40,7 @@ function init(){
 
     let eyeClassifierFile = 'haarcascade_eye.xml'; // path to xml
     
-    let faceClassifierFile='haarcascade_frontalface_alt2.xml';
+    let faceClassifierFile='haarcascade_frontalface_default.xml';
 
     // use createFileFromUrl to "pre-build" the xml
     createFileFromUrl(eyeClassifierFile, eyeClassifierFile, () => {
@@ -53,7 +55,7 @@ function init(){
 }
 createFileFromUrl = function(path, url, callback) {
     let request = new XMLHttpRequest();
-    request.open('GET', "https://azota889.github.io/storage_public/almo/"+url, true);
+    request.open('GET',urlBase+url, true);
     request.responseType = 'arraybuffer';
     request.onload = function(ev) {
         request = this;
@@ -143,4 +145,4 @@ function detectEye(obj){
         }
     });
 }
-importScripts("https://azota889.github.io/storage_public/almo/opencv.js");
+importScripts(urlBase+"opencv.js");
