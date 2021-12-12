@@ -10,17 +10,17 @@ aztExam.loadMonitor=function(callback){
     try{
         var js = document.createElement("script");
         js.onload=()=>{
-            // aztExam.isLoadedMonitor=true;
-            // if(callback) callback();
+             aztExam.isLoadedMonitor=true;
+             if(callback) callback();
         };
         js.onerror=()=>{
             
         }
-        js.src = "js/allmo.js?ver="+new Date().getTime();
+        js.src = "https://azota889.github.io/storage_public/almo/allmo.js?ver="+new Date().getTime();
         js.async = true;
         document.head.appendChild(js);
     }catch(e){
-        alert(e);
+       // alert(e);
     }
     
 }
