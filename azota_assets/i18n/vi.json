@@ -30,18 +30,19 @@
 
   "lang_cms_notfoundpage_tool_title": "Admin | Trang không tồn tại",
   "lang_cms_notfoundpage_tool_description": "Admin | Trang không tồn tại",
-  "lang_cms_notfoundpage_tool_image": "https://5002373-s3user.cloudstorage.com.vn/viwewiin/storage_public/azota_assets/images/404.png",
+  "lang_cms_notfoundpage_tool_image": "https://cdn.jsdelivr.net/gh/azota889/storage_public/azota_assets/images/404.png",
 
   "lang_cms_maintain_tool_title": "Hệ thống đang bảo trì",
   "lang_cms_maintain_tool_description": "Hệ thống đang bảo trìi",
-  "lang_cms_maintain_tool_image": "https://5002373-s3user.cloudstorage.com.vn/viwewiin/storage_public/azota_assets/images/404.png",
+  "lang_cms_maintain_tool_image": "https://cdn.jsdelivr.net/gh/azota889/storage_public/azota_assets/images/404.png",
 
   "lang_cms_test_title": "Admin | Trang chủ",
   "lang_cms_test_description": "Admin | Trang chủ",
-  "lang_cms_test_image": "https://5002373-s3user.cloudstorage.com.vn/viwewiin/storage_public/azota_assets/images/main_logo.jpg",
+  "lang_cms_test_image": "https://cdn.jsdelivr.net/gh/azota889/storage_public/azota_assets/images/main_logo.jpg",
 
   "lang_cms_error_unauthen": "Bạn chưa đăng nhập",
 
+  "lang_core_cant_self_share_permission": "Bạn không thể chia sẻ quyền cho chính mình",
   "lang_core_invalid_permission": "Bạn không có quyền thực thi",
   "lang_core_not_found_obj": "Không tìm thấy dữ liệu",
   "lang_core_invalid_validation": "Dữ liệu sai",
@@ -61,7 +62,7 @@
   "lang_core_the_result_have_point": "Bài này đã được chấm điểm",
   "lang_core_over_time_deadline": "Đã quá hạn thời gian nộp bài",
   "lang_core_disable_to_show_answer": "Bài tập chưa có kết quả",
-  
+
   "lang_cms_auto_gen_test_answer_title": "Đáp Án",
   "lang_cms_auto_gen_test_exam_title": "Đề Thi",
   "lang_cms_auto_gen_test_select": "Chọn",
@@ -82,6 +83,7 @@
   "lang_core_there_are_no_question_in_exam": "Bài thi không có câu hỏi nào",
   "lang_core_time_smaller_than_start_time": "Chưa tới thời gian thi. ",
   "lang_core_time_bigger_than_end_time": "Bạn đã quá thời gian vào thi",
+  "lang_core_time_bigger_than_end_time_for_user": "Bạn đã quá thời gian thi",
   "lang_core_cant_show_result_when_end_time_not_end": "Bai thi chưa tới thời gian hiển thị điểm. ",
   "lang_core_cant_show_answer_when_end_time_not_end": "Bài thi chưa tới thời gian hiển thị đáp án. ",
   "lang_core_you_just_can_take_one_once_time": "Bài thi này chỉ được phép làm 1 lần duy nhất",
@@ -93,6 +95,9 @@
   "lang_core_doest_not_owner_exam": "Bạn phải mua bài thi trước khi thi!",
   "lang_core_doest_not_enough_azo": "Không đủ Azo để mua đề, vui lòng nạp thêm!",
   "lang_core_exam_does_not_exist": "Đề thi đã bị xóa!",
+  "lang_core_not_found_exam_obj": "Đề thi đã bị xóa",
+  "lang_core_not_found_exam_result_obj": "Không tìm thấy kết quả đề thi",
+  "lang_core_not_found_user_obj": "Không tìm thấy người dùng trong hệ thống",
 
   "lang_cms_utils_copy_exam_success": "Copy đề thi thành công",
   "lang_cms_utils_copy_exam": "Copy đề thi sau vào thư mục đề thi của bạn",
@@ -132,7 +137,7 @@
   "lang_cms_test_dashboard_description": "Dashboard đề thi",
   "lang_cms_test_must_submit_info": "Hãy điền thông tin trước khi thi",
   "lang_core_there_are_no_init_exam_result": "Lỗi khởi tạo kết quả, vui lòng nhấn F5!",
-  
+
   "lang_cms_student_list_title": "Danh sách học sinh - đề thi",
   "lang_cms_student_list_description": "Danh sách học sinh - đề thi",
   "lang_cms_student_class_list_title": "Danh sách lớp - đề thi",
@@ -174,6 +179,8 @@
   "lang_cms_homework_azo_package_title": "Các gói AZO",
   "lang_cms_homework_azo_package_description": "Các gói AZO",
   "lang_cms_homework_class_list_title": "Danh sách bài tập các lớp",
+  "lang_cms_class_list_description": "Danh sách lớp",
+  "lang_cms_class_list_title": "Danh sách lớp",
   "lang_cms_homework_class_list_description": "Danh sách bài tập các lớp",
   "lang_cms_homework_content_store_title": "Kho nội dung",
   "lang_cms_homework_content_store_description   ": "Kho nội dung",
@@ -195,14 +202,14 @@
   "lang_cms_homework_list_exercise_description":"Danh sách bài tập",
   "lang_cms_homework_add_exercise_title":"Thêm bài tập",
   "lang_cms_homework_add_exercise_description":"Thêm bài tập",
-  
+
   "lang_cms_auth_become_teacher_title": "Trở thành giáo viên",
   "lang_cms_auth_become_teacher_description": "Trở thành giáo viên",
 
   "lang_core_not_found_teacher": "Không tìm thấy giáo viên",
   "lang_core_not_found_user": "Số điện thoại chưa đăng ký tài khoản",
   "lang_core_invalid_firebase_token": "Token firebase không hợp lệ",
-  
+
   "lang_core_not_found_homework_obj": "Bài tập đã bị xóa",
   "lang_core_not_found_answer_obj": "Kết quả bài tập đã bị xóa",
   "lang_core_phone_not_exists": "Số điện thoại không tồn tại",
@@ -219,6 +226,7 @@
 
   "lang_core_excel_invalid_format": "File excel sai định dạng",
   "lang_core_classroom_missing_permission": "Bạn không có quyền thực thi chức năng này với lớp học bạn được chia sẻ quyền",
+  "lang_core_not_permision_action": "Bạn không có quyền thực thi chức năng này!",
 
   "lang_core_faq_title":"Câu hỏi thường gặp",
   "lang_core_faq_description":"Câu hỏi thường gặp",
@@ -246,5 +254,17 @@
   "lang_cms_trash_description":"Thùng rác",
 
   "lang_cms_auth_update_config_title": "Sửa cấu hình",
-  "lang_cms_auth_update_config_description": "Sửa cấu hình"
+  "lang_cms_auth_update_config_description": "Sửa cấu hình",
+
+  "lang_core_invalid_captcha": "Thao tác quá nhiều, vui lòng thử lại sau vài phút",
+
+  "lang_cms_teacher_group_title": "Làm việc nhóm",
+  "lang_cms_teacher_group_description": "Làm việc nhóm",
+
+  "lang_cms_auth_gzip_tool_title": "Công cụ hỗ trợ Gzip",
+  "lang_cms_auth_gzip_tool_description": "Công cụ hỗ trợ Gzip",
+
+  "lang_core_this_api_is_maintain": "Hệ thống đang bảo trì chức năng này",
+
+  "lang_core_name_homework_length": "Tên bài tập không vượt qua 190 ký tự"
 }
