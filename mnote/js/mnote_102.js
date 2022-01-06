@@ -844,6 +844,8 @@ var MNote_instance=cc.Class.extend({
             strss=strss.replaceAll("<div>","_div");
             strss=strss.replaceAll("</div>","div_");
             strss=strss.replaceAll("&lt;","");
+            strss=strss.replaceAll("<","");
+            strss=strss.replaceAll("{","");
 
             strss=xssFilters.inHTMLData(strss)
 
