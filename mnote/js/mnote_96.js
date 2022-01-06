@@ -1331,6 +1331,10 @@ var MNote_instance=cc.Class.extend({
         //if(this.mnotedata.hideMark) mnotedata.point=0
         cc.log("EXPORT JSON "+JSON.stringify(mnotedata));
 
+        var jsstr=JSON.stringify(mnotedata);
+        if(jsstr.indexOf(">")>=0 
+        || jsstr.indexOf("<")>=0)
+
         return mnotedata;
      },
      updateSaveImageSuccess:function(url,index){
@@ -3529,7 +3533,7 @@ var MNote_instance=cc.Class.extend({
         }
 
 
-        try{
+        /*try{
             var localStaticConfig=localStorage.getItem("staticTextConfig");
             if(localStaticConfig){
                 this.staticTextConfig=JSON.parse(localStaticConfig);
@@ -3539,7 +3543,7 @@ var MNote_instance=cc.Class.extend({
             }
         }catch(e){
             //console.log("error parse local staticTextConfig");
-        }
+        }*/
         
 
         $("#setting_static_text_size").on("input",()=>{
