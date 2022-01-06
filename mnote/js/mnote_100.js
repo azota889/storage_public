@@ -128,6 +128,7 @@ window.addEventListener("message", function (event) {
 
         if(event.data.cmd && event.data.cmd=="getMNoteJson"){
            var data=mnote.exportJSON();
+           console.log("data : "+JSON.stringify(data));
            if(data.pages.length>0){
                 parent.postMessage({cmd:"MNoteJson",data:data},"*"); 
            }else{
@@ -209,6 +210,7 @@ function initNote(arrImage){
 }
 function exportJSON(){
     var data=mnote.exportJSON();
+    console.log("data : "+JSON.stringify(data));
     if(data.pages.length>0){
         parent.postMessage({cmd:"MNoteJson",data:data},"*"); 
     }else{
@@ -608,6 +610,7 @@ var MNote_instance=cc.Class.extend({
 
         $("#btn_save_data").on("touchend mouseup",(e)=>{
             var data=this.exportJSON();
+            console.log("data : "+JSON.stringify(data));
             if(data.pages.length>0){
                 parent.postMessage({cmd:"MNoteJson",data:data},"*"); 
             }else{
@@ -836,6 +839,21 @@ var MNote_instance=cc.Class.extend({
 
     initNote:function(data){
         //valide notedata 
+        try{
+            var strss=JSON.stringify(data);
+            strss=strss.replaceAll("<div>","_div");
+            strss=strss.replaceAll("</div>","div_");
+
+            strss=xssFilters.inHTMLData(strss)
+
+            strss=strss.replaceAll("_div","<div>");
+            strss=strss.replaceAll("div_","</div>");
+            data=JSON.parse(strss);
+        }catch(e){
+            alert("Dữ liệu đầu vào không hợp lệ !")
+            return ;
+        }
+
         this.mnotedata=data;
         this.mnotedata.fullname="hoten";
         this.mnotedata.classname="lop";
@@ -1333,21 +1351,19 @@ var MNote_instance=cc.Class.extend({
         var strss=JSON.stringify(mnotedata);
         strss=strss.replaceAll("<div>","_div");
         strss=strss.replaceAll("</div>","div_");
-       /* var jsstr=JSON.stringify(mnotedata);
-        if(jsstr.indexOf(">")>=0 
-        || jsstr.indexOf("<")>=0)*/
-        //var obreturn=mnotedata;
-       // try{
-        //console.log(xssFilters.inHTMLData(strss));
+        var obreturn=mnotedata;
+        try{
+       // console.log("xss: "+xssFilters.inHTMLData(strss));
+        obreturn=JSON.parse(xssFilters.inHTMLData(strss));
         //obreturn=JSON.parse(xssFilters.inHTMLData(strss).toString);
         //obreturn=JSON.parseJSON(xssFilters.inHTMLData(strss));
            
-       //}catch(e){
-       //     alert("Dữ liệu bạn nhập không hợp lệ !");
-       //   return null;
-       // }
+       }catch(e){
+            alert("Dữ liệu bạn nhập không hợp lệ !");
+         return null;
+        }
         
-        return mnotedata;
+        return obreturn;
      },
      updateSaveImageSuccess:function(url,index){
         //update image 
@@ -3542,21 +3558,7 @@ var MNote_instance=cc.Class.extend({
             fontText:"font_chu_dep",
             fontSize:30,
             fontColor:"red"
-        }
-
-
-        /*try{
-            var localStaticConfig=localStorage.getItem("staticTextConfig");
-            if(localStaticConfig){
-                this.staticTextConfig=JSON.parse(localStaticConfig);
-            }else{
-                //getlocalstorage from iframe
-                document.getElementById("ifclasslive").src="https://classlive.stume.net/localstorage.html"
-            }
-        }catch(e){
-            //console.log("error parse local staticTextConfig");
-        }*/
-        
+        }        
 
         $("#setting_static_text_size").on("input",()=>{
             $(".setting_text").css("font-size",$("#setting_static_text_size").val()+"px");
@@ -3968,17 +3970,16 @@ function startApp(){
     $("#root").css("display","block");
     mnote=MNote.getInstance();
 
-    //var arrPage=[{"width":750,"height":1334,"id":1,"backgroundImage":"images/test1.jpg","rotation":0,"staticText":[],"objText":[{"x":406,"y":454,"value":"Vbjutg<div>Vhhjj</div>","textStyle":{"font":"handwriting_font","size":40,"align":"left","color":"red","fill":false}},{"x":225,"y":942,"value":"Ghhrt<div>Ghhj</div>","textStyle":{"font":"handwriting_font","size":40,"align":"center","color":"red","fill":true}}]},{"width":750,"height":1334,"id":0,"backgroundImage":"images/test1.jpg?t=2","rotation":0,"staticText":[{"x":363,"y":808,"value":"correct"},{"x":485,"y":663,"value":"correct"},{"x":451,"y":837,"value":"correct"},{"x":324,"y":1026,"value":"correct"},{"x":476,"y":976,"value":"wrong"},{"x":544,"y":831,"value":"wrong"},{"x":439,"y":1140,"value":"wrong"},{"x":88,"y":836,"value":"wrong"},{"x":256,"y":594,"value":"wrong"},{"x":242,"y":748,"value":"correct"}],"objText":[]},{"width":750,"height":1334,"id":3,"backgroundImage":"images/test1.jpg?t=2","rotation":0,"staticText":[],"objText":[]},{"width":750,"height":1334,"id":2,"backgroundImage":"images/test3.jpg?t=2","rotation":0,"staticText":[],"objText":[]},{"width":750,"height":1334,"id":4,"backgroundImage":"images/test1.jpg?t=2","rotation":0,"staticText":[],"objText":[]},{"width":750,"height":1334,"id":5,"backgroundImage":"images/test1.jpg?t=2","rotation":0,"staticText":[],"objText":[]}];
+   // var arrPage=[{"width":750,"height":1334,"id":1,"backgroundImage":"images/test1.jpg","rotation":0,"staticText":[],"objText":[{"x":406,"y":454,"value":"Vbjutg<div>Vhhjj</div>","textStyle":{"font":"handwriting_font","size":40,"align":"left","color":"red","fill":false}},{"x":225,"y":942,"value":"Ghhrt<div>Ghhj</div>","textStyle":{"font":"handwriting_font","size":40,"align":"center","color":"red","fill":true}}]},{"width":750,"height":1334,"id":0,"backgroundImage":"images/test1.jpg?t=2","rotation":0,"staticText":[{"x":363,"y":808,"value":"correct"},{"x":485,"y":663,"value":"correct"},{"x":451,"y":837,"value":"correct"},{"x":324,"y":1026,"value":"correct"},{"x":476,"y":976,"value":"wrong"},{"x":544,"y":831,"value":"wrong"},{"x":439,"y":1140,"value":"wrong"},{"x":88,"y":836,"value":"wrong"},{"x":256,"y":594,"value":"wrong"},{"x":242,"y":748,"value":"correct"}],"objText":[]},{"width":750,"height":1334,"id":3,"backgroundImage":"images/test1.jpg?t=2","rotation":0,"staticText":[],"objText":[]},{"width":750,"height":1334,"id":2,"backgroundImage":"images/test3.jpg?t=2","rotation":0,"staticText":[],"objText":[]},{"width":750,"height":1334,"id":4,"backgroundImage":"images/test1.jpg?t=2","rotation":0,"staticText":[],"objText":[]},{"width":750,"height":1334,"id":5,"backgroundImage":"images/test1.jpg?t=2","rotation":0,"staticText":[],"objText":[]}];
    // var arrPage=[{"width":750,"height":1334,"id":1,"backgroundImage":"images/test1.jpg","rotation":0,"staticText":[{"x":254,"y":1003,"value":"correct"},{"x":402,"y":974,"value":"correct"},{"x":449,"y":1109,"value":"correct"},{"x":602,"y":1188,"value":"correct"},{"x":369,"y":1188,"value":"correct"}],"objText":[]},{"width":750,"height":450,"id":0,"backgroundImage":"https://player.vimeo.com/video/606881153","staticText":[],"objText":[]}];
-    /*var mnotedata={
+   /* var mnotedata={
         pages:arrPage,
         commentEmoji:["images/emoji/emoji2.gif","images/emoji/emoji3.gif","images/emoji/emoji4.gif","images/emoji/emoji5.gif"],
-        
         mode:"edit"
-    }
+    }*/
 
-    var mnotedata={"cmd":"initMNote","pages":arrPage,"answer_obj":{"id":263170,"homeworkId":20310,"studentId":385558,"note":null,"resendNote":null,"point":0,"result":null,"resultExams":null,"files":"[{\"name\":\"Screen Shot 2021-02-18 at 7.29.06 PM.png\",\"path\":\"/storage_public/azota/fcadb3c7cc7f65d8152b72365a39bba6_3862c1badd5e4e4395f3855cf10817ce1614226256.png\",\"extension\":\"png\",\"mimes\":\"image/png\",\"size\":\"13593\",\"url\":\"https://cdn.azota.vn/api/download_public/storage_public/azota/fcadb3c7cc7f65d8152b72365a39bba6_3862c1badd5e4e4395f3855cf10817ce1614226256.png\"}]","testbankExams":"[]","confirmedAt":null,"createdAt":"2021-02-25T11:11:00","updatedAt":"2021-02-25T11:11:00","homework":null,"student":null},"student_obj":{"id":385558,"code":null,"fullName":"hunglt","birthday":"2021-02-25T00:00:00","gender":0,"classroomId":19804,"parentId":413863,"createdAt":"2021-02-25T11:10:50","updatedAt":"2021-02-25T11:10:50","classroom":{"id":19804,"name":"test lop","teacherId":413838,"countStudents":1,"status":true,"showAddStudent":1,"createdAt":"2021-02-25T11:10:13","updatedAt":"2021-02-25T11:10:13","teacher":null,"homeworks":[],"students":[]},"answers":[{"id":263170,"homeworkId":20310,"studentId":385558,"note":null,"resendNote":null,"point":0,"result":null,"resultExams":null,"files":"[{\"name\":\"Screen Shot 2021-02-18 at 7.29.06 PM.png\",\"path\":\"/storage_public/azota/fcadb3c7cc7f65d8152b72365a39bba6_3862c1badd5e4e4395f3855cf10817ce1614226256.png\",\"extension\":\"png\",\"mimes\":\"image/png\",\"size\":\"13593\",\"url\":\"https://cdn.azota.vn/api/download_public/storage_public/azota/fcadb3c7cc7f65d8152b72365a39bba6_3862c1badd5e4e4395f3855cf10817ce1614226256.png\"}]","testbankExams":"[]","confirmedAt":null,"createdAt":"2021-02-25T11:11:00","updatedAt":"2021-02-25T11:11:00","homework":null,"student":null}]},"classroom_obj":{"id":19804,"name":"test lop","teacherId":413838,"countStudents":1,"status":true,"showAddStudent":1,"createdAt":"2021-02-25T11:10:13","updatedAt":"2021-02-25T11:10:13","teacher":null,"homeworks":[],"students":[]},"homework_obj":{"id":20310,"hashId":"p3h3q6","name":"Bài tập","classroomId":19804,"content":"<p>B&agrave;i tập trong s&aacute;ch gi&aacute;o khoa số 2&nbsp;</p>","deadline":"2021-02-26T00:00:00","type":null,"count":1,"files":"null","testbankExams":"null","createdAt":"2021-02-25T11:10:28","updatedAt":"2021-02-26T10:14:35","classroom":null,"answers":[]},"mode":"edit"}
-    mnote.initNote(mnotedata);*/
+   // var mnotedata={"pages":[{"width":750,"height":1334,"id":1,"backgroundImage":"images/test1.jpg","rotation":0,"staticText":[],"objText":[{"x":406,"y":454,"value":"Vbjutg_divVhhjjdiv_","textStyle":{"font":"handwriting_font","size":40,"align":"left","color":"red","fill":false}},{"x":225,"y":942,"value":"Ghhrt_divGhhjdiv_","textStyle":{"font":"handwriting_font","size":40,"align":"center","color":"red","fill":true}}]},{"width":750,"height":1334,"id":0,"backgroundImage":"images/test1.jpg?t=2","rotation":0,"staticText":[{"x":363,"y":808,"value":"correct"},{"x":485,"y":663,"value":"correct"},{"x":451,"y":837,"value":"correct"},{"x":324,"y":1026,"value":"correct"},{"x":476,"y":976,"value":"wrong"},{"x":544,"y":831,"value":"wrong"},{"x":439,"y":1140,"value":"wrong"},{"x":88,"y":836,"value":"wrong"},{"x":256,"y":594,"value":"wrong"},{"x":242,"y":748,"value":"correct"}],"objText":[]},{"width":750,"height":1334,"id":3,"backgroundImage":"images/test1.jpg?t=2","rotation":0,"staticText":[],"objText":[]},{"width":750,"height":1334,"id":2,"backgroundImage":"images/test3.jpg?t=2","rotation":0,"staticText":[],"objText":[]},{"width":750,"height":1334,"id":4,"backgroundImage":"images/test1.jpg?t=2","rotation":0,"staticText":[],"objText":[]},{"width":750,"height":1334,"id":5,"backgroundImage":"images/test1.jpg?t=2","rotation":0,"staticText":[],"objText":[]}],"staticTextConfig":"{\"urlImgCorrect\":\"images/rightwrong/right1.png\",\"urlImgWrong\":\"images/rightwrong/wrong1.png\",\"textCorrect\":\"đ\",\"textWrong\":\"s\",\"useCorrectText\":true,\"useWrongText\":true,\"correctWidth\":50,\"correctHeight\":50,\"wrongWidth\":50,\"wrongHeight\":50,\"fontText\":\"font_chu_dep\",\"fontSize\":30,\"fontColor\":\"red\",\"txtCommentFont\":\"font_chu_in\"}","comment":"&lt;script>scdscds&lt;/script>","commentEmoji":[],"point":"5.0","hideMark":false,"mode":"edit"}
+   // mnote.initNote(mnotedata);
 }
 
 loadCss();
