@@ -1,23 +1,63 @@
 var aztExam=aztExam || {};
-aztExam.MonitorStudent={
-    prepairSession:function(){
+aztExam.MonitorStudent=(function(){
+    var instance;
+    function createInstance(el) {
+        var object = {
+            prepairSession:function(){
 
-    },
-    startSession:function(){
+            },
+            startSession:function(){
+        
+            },
+            stopSession:function(){
+        
+            },
+        };
+        return object;
+    }
+    return {
+        getInstance: function (el) {
+            if (instance==null) {
+                instance = createInstance(el);
+            }
+            return instance;
+        },
+        releaseInst:function(){
+            instance=null;
+        },
+        inst:function(){
+            return this.getInstance();
+        }
+    };
+})();
+aztExam.MonitorTeacher=(function(){
+    var instance;
+    function createInstance(el) {
+        var object = {
+            prepairSession:function(){
 
-    },
-    stopSession:function(){
-
-    },
-}
-aztExam.MonitorTeacher={
-    prepairSession:function(){
-
-    },
-    startSession:function(){
-
-    },
-    stopSession:function(){
-
-    },
-}
+            },
+            startSession:function(){
+        
+            },
+            stopSession:function(){
+        
+            },
+        };
+        return object;
+    }
+    return {
+        getInstance: function (el) {
+            if (instance==null) {
+                instance = createInstance(el);
+            }
+            return instance;
+        },
+        releaseInst:function(){
+            instance=null;
+        },
+        inst:function(){
+            return this.getInstance();
+        }
+    };
+})();
