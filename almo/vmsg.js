@@ -135,9 +135,14 @@ function inlineWorker() {
       if (!vmsg_encode(msg.data)) return postMessage({type: "error", data: "vmsg_encode"});
       break;
     case "stop":
-      const blob = vmsg_flush();
-      if (!blob) return postMessage({type: "error", data: "vmsg_flush"});
-      postMessage({type: "stop", data: blob});
+      try{
+        const blob = vmsg_flush();
+        if (!blob) return postMessage({type: "error", data: "vmsg_flush"});
+        postMessage({type: "stop", data: blob});
+      }catch(e){
+
+      }
+      
       break;
     }
   };
@@ -241,8 +246,12 @@ class Recorder {
         // TODO(Kagami): Error handling.
         case "error":
         case "internal-error":
-          console.error("Worker error:", msg.data);
-          if (this.reject) this.reject(msg.data);
+          try{
+            if (this.reject) this.reject(msg.data);
+          }catch(e){
+            console.error("Worker error:", msg.data);
+          }
+          
           break;
         case "stop":
           this.blob = msg.data;
