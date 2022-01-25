@@ -1,1 +1,1 @@
-window.enableTrackMonitorForTeacherIdOrPhone=',1,';
+window.enableTrackMonitorForTeacherIdOrPhone=',1,10,';
