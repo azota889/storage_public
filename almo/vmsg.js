@@ -241,16 +241,16 @@ class Recorder {
           resolve();
           break;
         case "init-error":
-          reject(new Error(msg.data));
+          //reject(new Error(msg.data));
           break;
         // TODO(Kagami): Error handling.
         case "error":
         case "internal-error":
-          try{
+          /*try{
             if (this.reject) this.reject(msg.data);
           }catch(e){
             console.error("Worker error:", msg.data);
-          }
+          }*/
           
           break;
         case "stop":
