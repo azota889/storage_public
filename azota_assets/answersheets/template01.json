@@ -1,5 +1,5 @@
 {
-  "id": 1,
+  "id": 1.2,
   "wrap_width": 720,
   "wrap_height": 1038,
   "bounding": {
@@ -208,7 +208,7 @@
       },
       "cols": 4,
       "rows": 10,
-      "circle_answer_radius": 9
+      "circle_answer_radius": 7
     },
     "table2": {
       "name": "ExamID",
@@ -305,7 +305,7 @@
       },
       "cols": 3,
       "rows": 10,
-      "circle_answer_radius": 9
+      "circle_answer_radius": 7
     },
     "table3": {
       "name": "AnswerTB1",
@@ -402,7 +402,7 @@
       },
       "cols": 4,
       "rows": 24,
-      "circle_answer_radius": 9
+      "circle_answer_radius": 7
     },
     "table4": {
       "name": "AnswerTB2",
@@ -499,7 +499,7 @@
       },
       "cols": 4,
       "rows": 24,
-      "circle_answer_radius": 9
+      "circle_answer_radius": 7
     },
     "table5": {
       "name": "AnswerTB3",
@@ -596,7 +596,7 @@
       },
       "cols": 4,
       "rows": 24,
-      "circle_answer_radius": 9
+      "circle_answer_radius": 7
     },
     "table6": {
       "name": "AnswerTB4",
@@ -693,7 +693,7 @@
       },
       "cols": 4,
       "rows": 24,
-      "circle_answer_radius": 9
+      "circle_answer_radius": 7
     },
     "table7": {
       "name": "AnswerTB5",
@@ -790,7 +790,7 @@
       },
       "cols": 4,
       "rows": 24,
-      "circle_answer_radius": 9
+      "circle_answer_radius": 7
     }
   },
   "output_size": 0
