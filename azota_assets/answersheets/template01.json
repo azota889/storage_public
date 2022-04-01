@@ -1,5 +1,5 @@
 {
-  "id": 1.4,
+  "id": 1.5,
   "wrap_width": 720,
   "wrap_height": 1038,
   "bounding": {
@@ -127,8 +127,8 @@
         "bounding": {
           "x": 464,
           "y": 97,
-          "width": 49,
-          "height": 49
+          "width": 69,
+          "height": 69
         },
         "template": {
           "x": -1,
@@ -169,8 +169,8 @@
         "bounding": {
           "x": 464,
           "y": 284,
-          "width": 49,
-          "height": 49
+          "width": 69,
+          "height": 69
         },
         "template": {
           "x": -1,
@@ -224,8 +224,8 @@
         "bounding": {
           "x": 585,
           "y": 97,
-          "width": 49,
-          "height": 49
+          "width": 69,
+          "height": 69
         },
         "template": {
           "x": -1,
@@ -266,8 +266,8 @@
         "bounding": {
           "x": 585,
           "y": 284,
-          "width": 49,
-          "height": 49
+          "width": 69,
+          "height": 69
         },
         "template": {
           "x": -1,
