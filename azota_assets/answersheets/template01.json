@@ -1,5 +1,5 @@
 {
-  "id": 1.2,
+  "id": 1.3,
   "wrap_width": 720,
   "wrap_height": 1038,
   "bounding": {
@@ -168,7 +168,7 @@
         "type": 0,
         "bounding": {
           "x": 464,
-          "y": 351,
+          "y": 284,
           "width": 49,
           "height": 49
         },
@@ -265,7 +265,7 @@
         "type": 0,
         "bounding": {
           "x": 585,
-          "y": 351,
+          "y": 284,
           "width": 49,
           "height": 49
         },
