@@ -115,7 +115,7 @@
   "tables": {
     "table1": {
       "name": "StudentID",
-      "type": 12,
+      "type": 0,
       "bounding": {
         "x": 464,
         "y": 97,
@@ -212,7 +212,7 @@
     },
     "table2": {
       "name": "ExamID",
-      "type": 12,
+      "type": 0,
       "bounding": {
         "x": 585,
         "y": 97,
