@@ -3180,6 +3180,11 @@ class PDFObjects {
     };
   }
 
+  // haiau
+  getAll() {
+    return this.#objs;
+  }
+
   get(objId, callback = null) {
     if (callback) {
       const obj = this.#ensureObj(objId);
@@ -7170,6 +7175,13 @@ class CanvasGraphics {
 
     ctx.imageSmoothingEnabled = getImageSmoothingEnabled(ctx.mozCurrentTransform, imgData.interpolate);
     ctx.drawImage(scaled.img, 0, 0, scaled.paintWidth, scaled.paintHeight, 0, -height, width, height);
+
+    //haiau
+    const sc = ctx.mozCurrentTransform[0];
+    imgData.left = ctx.mozCurrentTransformInverse[4] * sc;
+    imgData.top = ctx.mozCurrentTransformInverse[5] * sc;
+    imgData.paintWidth = width * sc;
+    imgData.paintHeight = height * sc;
 
     if (this.imageLayer) {
       const position = this.getCanvasPosition(0, -height);
