@@ -1,7 +1,8 @@
 {
-  "id": 1.8,
+  "id": 1.9,
   "wrap_width": 720,
   "wrap_height": 1038,
+  "uids":[4],
   "bounding": {
     "x": 0,
     "y": 0,
@@ -33,8 +34,8 @@
     "bounding": {
       "x": 0,
       "y": 0,
-      "width": 180,
-      "height": 120
+      "width": 220,
+      "height": 200
     },
     "template": {
       "x": -1,
@@ -94,10 +95,10 @@
   "right_region": {
     "type": 0,
     "bounding": {
-      "x": 538,
+      "x": 498,
       "y": 0,
-      "width": 180,
-      "height": 120
+      "width": 220,
+      "height": 200
     },
     "template": {
       "x": -1,
