@@ -7177,11 +7177,12 @@ class CanvasGraphics {
     ctx.drawImage(scaled.img, 0, 0, scaled.paintWidth, scaled.paintHeight, 0, -height, width, height);
 
     //haiau
-    const sc = ctx.mozCurrentTransform[0];
-    imgData.left = ctx.mozCurrentTransformInverse[4] * sc;
-    imgData.top = ctx.mozCurrentTransformInverse[5] * sc;
-    imgData.paintWidth = width * sc;
-    imgData.paintHeight = height * sc;
+    const hsc = ctx.mozCurrentTransform[0];
+    const vsc = ctx.mozCurrentTransform[3];
+    imgData.left = ctx.mozCurrentTransformInverse[4] * hsc;
+    imgData.top = ctx.mozCurrentTransformInverse[5] * vsc;
+    imgData.paintWidth = width * hsc;
+    imgData.paintHeight = height * vsc;
 
     if (this.imageLayer) {
       const position = this.getCanvasPosition(0, -height);
