@@ -1,8 +1,14 @@
 {
-  "id": 2.0,
+  "id": 2.1,
   "wrap_width": 720,
   "wrap_height": 1038,
   "uids":[1,2,3,4,5,6,7,8,9,10,11,12],
+  "name_region":{
+    "x":176,
+    "y":204,
+    "width":227,
+    "height":42
+  },
   "bounding": {
     "x": 0,
     "y": 0,
