@@ -1359,7 +1359,10 @@ var MNote_instance=cc.Class.extend({
         strss=strss.replaceAll("<","");
         strss=strss.replaceAll(">","");
         strss=strss.replaceAll("<br>","");
-        strss=strss.replaceAll("<br/>,"");
+        
+        strss=strss.replaceAll("<br/>","");
+
+
         var obreturn=mnotedata;
         try{
        // console.log("xss: "+xssFilters.inHTMLData(strss));
