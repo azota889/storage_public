@@ -305,6 +305,8 @@ var MNote_instance=cc.Class.extend({
 
      desktopZoom:1,
 
+     numLoaded:0,
+
     ctor:function(){
         var self=this;
         this.note_pages=document.getElementById("mnote_pages");
@@ -1025,6 +1027,7 @@ var MNote_instance=cc.Class.extend({
          this.removeAllPage();
      },
      addPages:function(pages){
+         this.numLoaded=0;
          for(var i=0;i<pages.length;i++){
              this.addPage(pages[i]);
          }
@@ -1514,6 +1517,12 @@ var MNote_instance=cc.Class.extend({
         
         if (this.mnotedata.mode=="edit" && getOs()=="web"){
             $(this.note_container).height($(this.note_container).height()+300);
+        }
+
+        this.numLoaded++;
+        if(this.numLoaded==this.mnotedata.pages.length){
+             console.log("post size : "+$(this.note_container).height());
+             parent.postMessage({cmd:"MNoteResize",data:{height:$(this.note_container).height(),scale:this.pageScale}},"*"); 
         }
 
          //rotate image bg 
