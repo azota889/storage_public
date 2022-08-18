@@ -930,7 +930,10 @@ var MNote_instance=cc.Class.extend({
                     else if(strMark=="2001") strMark="CHT"
                     $("#mark_number_txt").val(strMark);
                 }
-                this.resizeTxtComment();
+	    	setTimeout(()=>{
+			this.resizeTxtComment();
+		},500);
+                
 
                 if(data.commentEmoji){
                     this.addCommentEmoji(data.commentEmoji);
