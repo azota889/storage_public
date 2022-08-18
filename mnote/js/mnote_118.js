@@ -1016,6 +1016,7 @@ var MNote_instance=cc.Class.extend({
                 }
 
                 setTimeout(()=>{
+                    this.resizeTxtComment();
                     if(this.mnotedata.mode=="edit") $("#mnote_hold_bt").css("display","flex");
                 },500);  
           //  })     
