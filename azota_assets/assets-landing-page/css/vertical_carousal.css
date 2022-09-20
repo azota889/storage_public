@@ -1,0 +1,70 @@
+.vertical-carousel {
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+.vertical-carousel-box,
+.vertical-carousel-box .item {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+.vertical-carousel-box .item {
+  overflow: hidden;
+}
+.vertical-carousel-indicators {
+  z-index: 1000;
+  position: fixed;
+  top: 50%;
+  right: 30px;
+  text-align: center;
+  padding: 0;
+  margin: -40px 0 0 0;
+}
+.vertical-carousel-indicators li {
+  display: block;
+  position: relative;
+  z-index: 1001;
+  list-style: none;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  padding: 5px;
+}
+.vertical-carousel-indicators li:before {
+  content: '';
+  -webkit-transition: all 0.1s;
+  -moz-transition: all 0.1s;
+  -ms-transition: all 0.1s;
+  -o-transition: all 0.1s;
+  transition: all 0.1s;
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  background: transparent;
+}
+.vertical-carousel-indicators li:hover:before {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #fff;
+}
+.vertical-carousel-indicators li.active:before {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #fff;
+}
+.vertical-carousel-box {
+  -webkit-transition: transform 600ms;
+  -moz-transition: transform 600ms;
+  -ms-transition: transform 600ms;
+  -o-transition: transform 600ms;
+  transition: transform 600ms;
+}
+/*# sourceMappingURL=vertical_carousal.css.map */
