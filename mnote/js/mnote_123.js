@@ -23,6 +23,8 @@ function showLoading() {
     $(".loading").css("display", "block")
 }
 
+
+
 function hideLoading() {
     $(".loading").css("display", "none")
 }
