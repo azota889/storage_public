@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+	<script src="imgsdk.js"></script>
+  <script src="imgsdk_.js"></script>
+  <style>
+    .title{
+      font-weight: bolder;
+      margin-bottom: 20px;
+      position: fixed;
+      height: 50px;
+      top:0px;
+      width: 100%;
+      background-color: gray;
+      color: white;
+      padding: 15px;
+      font-family: Arial, Helvetica, sans-serif;
+      letter-spacing: 2px;
+    }
+    .progress{
+       margin-top: 10px;
+    }
+  </style>
+  </head>
+  <body>
+    <div class="title">
+      <div class="picker">
+        <input type="file" id="pickerDirectory" name="fileList"  webkitdirectory multiple style="display: none;" >
+        <input type="file" id="pickerFile" name="file" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" style="display: none;">
+        <button type="button" id="btn_directory">Upload folder</button>
+        <button type="button" id="bnt_file">Upload file </button>
+        <button type="button" id="btn_run_test">Run test</button>
+        <button type="button" id="btn_download">Download (550 image) </button>
+      </div>
+        <div id="progress" class="progress"></div>
+    </div>
+    <div id="result" style="margin-top: 100px;"></div>
+    <script>
+        var arrQueue=[];
+        var isProcessing=false;
+        var done=0;
+        var total=0;
+        document.addEventListener('DOMContentLoaded',() => {
+            let pickerDirectory = document.getElementById('pickerDirectory');
+            pickerDirectory.addEventListener('change', e => {
+                pickerDirectoryChange(e);
+            });
+
+            let pickerFile = document.getElementById('pickerFile');
+            pickerFile.addEventListener('change', e => {
+                pickerFileChange(e);
+            });
+
+            let btn_run_test=document.getElementById('btn_run_test');
+            btn_run_test.addEventListener("click",()=>{
+              for(var i=1;i<48;i++){
+                  var idx=(i<10)? "0"+i:""+i;
+                  getImgUrl("debug/check_0"+idx+".jpg");
+              }
+            })
+
+            let btn_download=document.getElementById("btn_download");
+            btn_download.addEventListener("click",()=>{
+              var link = document.createElement('a');
+              link.download = 'images.zip';
+              link.href = "images.zip";
+              link.click();
+            })
+
+            let btn_directory=document.getElementById("btn_directory");
+            btn_directory.addEventListener("click",()=>{
+              pickerDirectory.click();
+            })
+
+            let bnt_file=document.getElementById("bnt_file");
+            bnt_file.addEventListener("click",()=>{
+              pickerFile.click();
+            })
+        });
+       function pickerDirectoryChange(e){
+            for (let file of Array.from(e.target.files)) {
+                imgsdk.log("path : "+file.webkitRelativePath);
+
+                if(file.webkitRelativePath.indexOf("._")<0
+                && (file.webkitRelativePath.indexOf(".jpg")>0
+                    || file.webkitRelativePath.indexOf(".png")>0
+                    || file.webkitRelativePath.indexOf(".tiff")>0
+                    || file.webkitRelativePath.indexOf(".jpeg")>0
+                )){
+                    getFileLocal(file);
+                }
+                
+            };
+       } 
+
+       function pickerFileChange(e){
+          for (let file of Array.from(e.target.files)) {
+                getFileLocal(file);
+          }
+       }
+
+       function getFileLocal(file){
+          var fr=new FileReader();
+          fr.onload=function(){
+            var data = fr.result;
+            var array = new Uint8Array(data);
+            addQueue(array);
+          }
+          fr.readAsArrayBuffer(file);
+       } 
+
+       function getImgUrl(url){
+        var img=new Image();
+           img.onload=()=>{
+                addQueue(img);  
+           }
+           img.src=url;
+       } 
+
+       function addQueue(data){
+            arrQueue.push(data);
+            total++;
+            processQueue();
+       }
+       function processQueue(){
+           if(isProcessing) return;
+           if(arrQueue.length==0) return;
+
+           var data=arrQueue.shift();
+           if(data){
+               processImg(data);
+           }
+       }
+
+       async function processImg(data){
+          isProcessing=true;
+          try{
+              await imgsdk.init();
+              var obj=await imgsdk.processAnswerSheet({
+                src:data,
+                width:720,
+                height:1280,
+                token:"abc123"
+              });
+              imgsdk.log("process result : "+JSON.stringify(obj));
+              showOutput(obj);
+          }catch(e){
+              
+          }
+          done++;
+          isProcessing=false;
+          processQueue();
+       }
+
+       showOutput=function(obj){
+            if(done%100==0){
+              var result=document.getElementById("result");
+              result.textContent="";
+            }
+
+            var div=document.createElement("div");
+            div.style.marginTop="80px";
+            
+            var result=document.getElementById("result");
+            result.insertBefore(div,result.firstChild);
+            var divResult=document.createElement("div");
+            divResult.style.width="90%";
+            divResult.style.fontSize="18px";
+            divResult.style.wordBreak= "break-all";
+            divResult.style.padding="20px";
+            divResult.textContent="StudentId:"+obj.StudentId+".ExamId:"+obj.ExamId+".Answers:"+obj.Answers;
+            divResult.textContent+="."+obj.mess;
+            div.appendChild(divResult);
+
+
+            obj.img_in.width=360;
+            div.appendChild(obj.img_in);
+            if(obj.img_out) {
+                obj.img_out.width=360;
+                obj.img_out.style.marginLeft="30px";
+                obj.img_out.style.display="inline";
+                obj.img_out.style.verticalAlign="top";
+                div.appendChild(obj.img_out); 
+            }
+
+            document.getElementById("progress").textContent="Đang xử lý : "+(done+1)+"/"+total;
+       }
+
+
+    </script>
+</body>
+
+
+</html>
