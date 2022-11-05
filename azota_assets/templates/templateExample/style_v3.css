@@ -42,7 +42,7 @@ body {
   right: -9999px;
   margin: auto;
   min-width: 100%;
-  z-index: -1;
+  z-index: 0;
 }
 .section-one .box {
   width: 65%;
@@ -254,6 +254,19 @@ footer {
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {margin-bottom: 0.5rem;font-weight: 500;line-height: 1.2;}
 .container {width: 100%;padding-right: 15px;padding-left: 15px;margin-right: auto;margin-left: auto;}
 
+.text_front_img {
+  position: sticky; 
+  z-index: 0; 
+  margin: 5rem;
+}
+.w-80 {
+  width: 80%;
+}
+.img-fluid {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
 @media (min-width: 576px){
 	.container {max-width: 540px;}
 }

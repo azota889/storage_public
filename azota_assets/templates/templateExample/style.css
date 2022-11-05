@@ -42,7 +42,7 @@ body {
   right: -9999px;
   margin: auto;
   min-width: 100%;
-  z-index: -1;
+  z-index: 0;
 }
 .section-one .box {
   width: 65%;
@@ -158,6 +158,19 @@ footer {
   height: 100%;
   border-bottom: 0 !important;
   border-right: 0 !important;
+}
+.text_front_img {
+  position: sticky; 
+  z-index: 0; 
+  margin: 5rem;
+}
+.width-80 {
+  width: 80%;
+}
+.img-fluid {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
 }
 
 @media only screen and (max-width: 992px) {
