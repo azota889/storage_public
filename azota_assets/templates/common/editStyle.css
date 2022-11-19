@@ -39,3 +39,17 @@
 #__tpl_exam_iframe img{
  width: 100%;
 }
+.text_front_img {
+  position: sticky; 
+  z-index: 0; 
+  margin: 5rem;
+}
+.width-80 {
+  width: 80%;
+}
+.img-fluid {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
