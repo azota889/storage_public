@@ -1,0 +1,19 @@
+
+{
+    "id":"nHandler",
+    "js":"nHandler.js",
+    "ver":"0.1",
+    "dependencies":[],
+    "registerNodes":[],
+    "registerCmds":[],
+    "registerHandlers":["CmdHandler","PageViewHandler","SelectionHandler"],
+    "config":{
+        "SelectionHandler":{
+            "autoStart":true
+        },
+        "CmdHandler":{
+            "autoStart":true
+        }
+    }
+}
+  

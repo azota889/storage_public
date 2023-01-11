@@ -1,0 +1,17 @@
+
+{
+    "id":"nDraw",
+    "js":"nDraw.js",
+    "ver":"0.1",
+    "dependencies":["nNode"],
+    "registerNodes":["UIDraw"],
+    "registerCmds":["StartDrawCmd","StopDrawCmd","SetDrawBrush","SetStyleBrush"],
+    "registerHandlers":["DrawHandler"],
+    "registerClassTypes":["DrawBrushFree","DrawBrushLine","DrawBrushRect","DrawBrushSquare","DrawBrushTriangle","DrawBrushCircle","DrawBrushArrow","DrawBrushErase","DrawBrushImage"],
+    "config":{
+        "DrawHandler":{
+            "autoStart":false
+        }
+    }
+}
+  

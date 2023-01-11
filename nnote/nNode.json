@@ -1,0 +1,17 @@
+
+{
+    "id":"nNode",
+    "js":"nNode.js",
+    "ver":"0.1",
+    "dependencies":[],
+    "registerNodes":["UIPage","UIImage","UIGroup","UIText","UITextImage","UIShape","UILayer","UIAudio","UIVideo","UIWebview","UIYoutube","UILottieAnimation","UIPdfLoader","UIOfficeLoader"],
+    "registerCmds":[],
+    "registerHandlers":[],
+    "config":{
+        "OfficeLoader":{
+            "officePluginUrl":"http://localhost:8000/plugins/officejs/index.html",
+            "officeLinkDocx":"https://view.officeapps.live.com/op/embed.aspx?src=",
+            "officeLinkPptx":"https://docs.google.com/gview?url="
+        }
+    }
+}

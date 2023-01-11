@@ -1,0 +1,16 @@
+
+{
+    "id":"nAnimejs",
+    "js":"nAnimejs.js",
+    "ver":"0.1",
+    "dependencies":[],
+    "registerNodes":[],
+    "registerCmds":[],
+    "registerHandlers":["AnimejsHandler"],
+    "registerClassTypes":["AnimejsHapi","AnimejsAmun",
+    "AnimejsKek","AnimejsIsis","AnimejsMontu","AnimejsOsiris","AnimejsSatet","AnimejsAtum","AnimejsRa","AnimejsSobek","AnimejsPtah","AnimejsBes"
+    ,"AnimejsSeker","AnimejsNut","AnimejsShu"],
+    "config":{
+    }
+}
+  

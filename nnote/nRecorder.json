@@ -1,0 +1,19 @@
+
+{
+    "id":"nRecorder",
+    "js":"nRecorder.js",
+    "ver":"0.1",
+    "dependencies":[],
+    "registerNodes":[],
+    "registerCmds":[],
+    "registerHandlers":["RecorderHandler","NoteRecorderHandler"],
+    "config":{
+        "RecorderHandler":{
+            "iframePluginUrl":"http://192.168.1.5:9002/plugins/recorder/index.html"
+        },
+        "NoteRecorderHandler":{
+            "autoStart":true
+        }
+    }
+}
+  

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name=viewport content="width=device-width,initial-scale=1">  
+    <meta charset="utf-8"/>
+    <title>geogebra</title>
+    <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+</head>
+<body style="height:100vh;margin: 0px;padding: 0px;overflow: hidden;">
+    <div id="ggb-element"></div> 
+    <script src="../core/noteplugin.js"></script>
+    <script src="index.js"></script> 
+    <!--script>
+        var pluginApi=null;
+        document.addEventListener("DOMContentLoaded",()=>{     
+            var params = {"appName": "geometry", "width": window.innerWidth, "height": window.innerHeight, "showToolBar": true, "showAlgebraInput": true, "showMenuBar": true,appletOnLoad:(api)=>{
+                pluginApi=api
+            } };
+            var applet = new GGBApplet(params, true);
+            applet.inject('ggb-element');
+        })
+
+        setTimeout(()=>{
+            pluginApi.exportSVG((svg)=>{
+                //document.body.appendChild(svg);
+                var div=document.createElement("div");
+                div.innerHTML=svg;
+                document.body.appendChild(div);
+            });
+        },10000);
+    </script-->
+</body>

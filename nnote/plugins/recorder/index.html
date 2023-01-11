@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Media Recorder</title>
+
+  <link href="js/video-js.min.css" rel="stylesheet">
+  <link href="js/videojs.wavesurfer.min.css" rel="stylesheet">
+  <link href="js/videojs.record.css" rel="stylesheet">
+  <link href="js/examples.css" rel="stylesheet">
+
+  <script src="js/video.min.js"></script>
+  <script src="js/RecordRTC.js"></script>
+  <script src="js/adapter.js"></script>
+  <script src="js/wavesurfer.min.js"></script>
+  <script src="js/wavesurfer.microphone.min.js"></script>
+  <script src="js/videojs.wavesurfer.min.js"></script>
+  <script src="js/ffmpeg.min.js"></script>
+
+  <script src="js/videojs.record.js"></script>
+  <script src="js/browser-workarounds.js"></script>
+
+  <style>
+  /* change player background color */
+  #myVideo {
+      background-color: #54a86b;
+  }
+  </style>
+</head>
+<script>
+    if (!crossOriginIsolated) SharedArrayBuffer = ArrayBuffer;
+  </script>
+<body style="padding:0px;margin:0px;overflow: hidden;">
+
+<video id="myVideo" playsinline class="video-js vjs-default-skin"></video>
+
+<script src="../core/noteplugin.js"></script>
+<script src="index.js"></script>
+
+</body>
+</html>
