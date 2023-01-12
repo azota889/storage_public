@@ -9,13 +9,13 @@
     "registerHandlers":["WirisHandler","GeogebraHandler"],
     "config":{
         "UIMathML":{
-            "mathJaxLink":"http://192.168.1.5:9002/plugins/mathjax/mml-svg.js"
+            "mathJaxLink":"plugins/mathjax/mml-svg.js"
         },
         "WirisHandler":{
-            "iframePluginUrl":"http://192.168.1.5:9002/plugins/wiris/index.html"
+            "iframePluginUrl":"plugins/wiris/index.html"
         },
         "GeogebraHandler":{
-            "iframePluginUrl":"http://192.168.1.5:9002/plugins/geogebra/index.html"
+            "iframePluginUrl":"plugins/geogebra/index.html"
         }
     }
 }

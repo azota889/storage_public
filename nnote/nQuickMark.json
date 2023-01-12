@@ -12,15 +12,21 @@
             "autoStart":false,
             "rightNode":{
                 "fontFace":{
-                    "src":"http://192.168.1.5:9002/images/HP0015HB.ttf",
-                    "family":"font_chu_dep"
+                    "src":"",
+                    "family":"Arial"
                 },
                 "textContent":"đ",
                 "fontColor":"red",
                 "fontSize":40            
             },
             "wrongNode":{
-                "imageSrc":"http://192.168.1.5:9002/images/SRD_comic_clouds_11.svg"         
+                "fontFace":{
+                    "src":"",
+                    "family":"Arial"
+                },
+                "textContent":"s",
+                "fontColor":"red",
+                "fontSize":40   
             }
         }
     }

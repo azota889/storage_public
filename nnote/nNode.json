@@ -9,7 +9,7 @@
     "registerHandlers":[],
     "config":{
         "OfficeLoader":{
-            "officePluginUrl":"http://localhost:8000/plugins/officejs/index.html",
+            "officePluginUrl":"plugins/officejs/index.html",
             "officeLinkDocx":"https://view.officeapps.live.com/op/embed.aspx?src=",
             "officeLinkPptx":"https://docs.google.com/gview?url="
         }
