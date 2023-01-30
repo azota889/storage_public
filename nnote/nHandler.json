@@ -13,6 +13,9 @@
         },
         "CmdHandler":{
             "autoStart":true
+        },
+        "PageViewHandler":{
+            "autoStart":true
         }
     }
 }
