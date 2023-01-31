@@ -34,6 +34,6 @@
         }
     ],
     "trustDomain":[
-        "localhost","azota.vn","www.azota.vn","youtube.com","www.youtube.com","s3-origin.nextidc.net","azota889.github.io","wewiin.nyc3.cdn.digitaloceanspaces.com","azotacdn.studybymusic.com"
+        "localhost","azota.vn","www.azota.vn","youtube.com","www.youtube.com","s3-origin.nextidc.net","azota889.github.io","wewiin.nyc3.cdn.digitaloceanspaces.com","azotacdn.studybymusic.com","png.pngtree.com","nextcdn.studybymusic.com"
     ]
 }
