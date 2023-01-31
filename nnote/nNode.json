@@ -8,10 +8,6 @@
     "registerCmds":[],
     "registerHandlers":[],
     "config":{
-        "OfficeLoader":{
-            "officePluginUrl":"plugins/officejs/index.html",
-            "officeLinkDocx":"https://view.officeapps.live.com/op/embed.aspx?src=",
-            "officeLinkPptx":"https://docs.google.com/gview?url="
-        }
+       
     }
 }
