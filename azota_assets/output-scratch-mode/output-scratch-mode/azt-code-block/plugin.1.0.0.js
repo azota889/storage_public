@@ -244,6 +244,7 @@
               this.onHandleExecuteSuggestion(closest);
             }
           });
+          this.detachAll();
         });
       }
       onHandleExecuteSuggestion(target) {
@@ -451,7 +452,7 @@ code.hljs {
 
     const setup = editor => {
         AztApiRegister(editor).then(pluginApi => {
-          pluginApi.loadStyle(`${ CONST_PLUGIN_NAME }__default`, StylePluginRegister, CONST_TYPE_MODE_SOURCE.ALL);
+          pluginApi.loadStyle(`${ CONST_PLUGIN_NAME }__default`, StylePluginRegister, CONST_TYPE_MODE_SOURCE.FRAME);
           new Application(editor, pluginApi);
         });
       }, initPlugin = () => {

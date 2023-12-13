@@ -197,6 +197,7 @@
         this.pluginApi = pluginApi;
         this.pluginApi.addOneSuggestionMenu(this.pluginApi.translate('lang_editor_common_add_detailed_solution', 'Th\xeam l\u1eddi gi\u1ea3i chi ti\u1ebft'), 'azt-helper-question-add', AZT_PLUGIN_SVG_ICON.AztListChecks, false, true);
         this.pluginApi.addOneSuggestionMenu(this.pluginApi.translate('lang_editor_common_delete_detailed_solution', 'X\xf3a l\u1eddi gi\u1ea3i chi ti\u1ebft'), 'azt-helper-question-remove', AZT_PLUGIN_SVG_ICON.AztListChecks, true, true);
+        this.setupEventExport();
         this.editor.on(EVENT_AZT_PUSH_JSON_CONTENT, event => {
           if (event.name === 'QUESTION_MULTIPLE_CHOICE_JSON') {
             this.processJsonToElement(event.content);
@@ -216,7 +217,7 @@
         });
       }
       processJsonToElement(jsonObj) {
-        const element = document.createElement('div');
+        const element = document.createElement('p');
         element.classList.add('azt-helper-question-manager');
         element.setAttribute('data-translate-text', this.pluginApi.translate('lang_editor_common_detailed_solution_guide', 'H\u01b0\u1edbng d\u1eabn gi\u1ea3i chi ti\u1ebft'));
         element.innerHTML = jsonObj.help;
@@ -265,6 +266,12 @@
         if (target.classList.contains('azt-helper-question-manager')) {
           target.classList.remove('azt-helper-question-manager');
         }
+      }
+      setupEventExport() {
+        this.editor.on(`${ CONST_PLUGIN_NAME }--export`, event => {
+          const helpElms = this.getAllHelperElement();
+          event.callback(helpElms.map(m => m.outerHTML).join(''));
+        });
       }
     }
 
