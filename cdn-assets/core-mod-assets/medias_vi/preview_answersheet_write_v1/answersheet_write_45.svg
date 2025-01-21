@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+
+<!-- Page 1 -->
+<svg x="0" y="0" width="935" height="1210" viewBox="0 0 935 1210" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+style="display: block;margin-left: auto;margin-right: auto;">
+<defs>
+<clipPath id="c_1"><path d="M0,0H935V1210H0Z"/></clipPath>
+<clipPath id="c0_1"><path d="M0,1210V0H935V1210Z"/></clipPath>
+<clipPath id="c1_1"><path d="M65.4,443.7V431h54.3v12.7Z"/></clipPath>
+<clipPath id="c2_1"><path d="M119.8,443.7V431H174v12.7Z"/></clipPath>
+<clipPath id="c3_1"><path d="M174.1,443.7V431h54.4v12.7Z"/></clipPath>
+<clipPath id="c4_1"><path d="M228.6,443.7V431h54.2v12.7Z"/></clipPath>
+<clipPath id="c5_1"><path d="M282.9,443.7V431h54.4v12.7Z"/></clipPath>
+<clipPath id="c6_1"><path d="M337.3,443.7V431h54.3v12.7Z"/></clipPath>
+<clipPath id="c7_1"><path d="M391.6,443.7V431H446v12.7Z"/></clipPath>
+<clipPath id="c8_1"><path d="M446.1,443.7V431h54.2v12.7Z"/></clipPath>
+<clipPath id="c9_1"><path d="M500.4,443.7V431h54.4v12.7Z"/></clipPath>
+<clipPath id="ca_1"><path d="M554.9,443.7V431h54.2v12.7Z"/></clipPath>
+<clipPath id="cb_1"><path d="M609.2,443.7V431h54.4v12.7Z"/></clipPath>
+<clipPath id="cc_1"><path d="M663.7,443.7V431H718v12.7Z"/></clipPath>
+<clipPath id="cd_1"><path d="M718.1,443.7V431h54.2v12.7Z"/></clipPath>
+<clipPath id="ce_1"><path d="M772.4,443.7V431h54.4v12.7Z"/></clipPath>
+<clipPath id="cf_1"><path d="M826.9,443.7V431h54.4v12.7Z"/></clipPath>
+<clipPath id="cg_1"><path d="M65.4,511.7V499h54.3v12.7Z"/></clipPath>
+<clipPath id="ch_1"><path d="M119.8,511.7V499H174v12.7Z"/></clipPath>
+<clipPath id="ci_1"><path d="M174.1,511.7V499h54.4v12.7Z"/></clipPath>
+<clipPath id="cj_1"><path d="M228.6,511.7V499h54.2v12.7Z"/></clipPath>
+<clipPath id="ck_1"><path d="M282.9,511.7V499h54.4v12.7Z"/></clipPath>
+<clipPath id="cl_1"><path d="M337.3,511.7V499h54.3v12.7Z"/></clipPath>
+<clipPath id="cm_1"><path d="M391.6,511.7V499H446v12.7Z"/></clipPath>
+<clipPath id="cn_1"><path d="M446.1,511.7V499h54.2v12.7Z"/></clipPath>
+<clipPath id="co_1"><path d="M500.4,511.7V499h54.4v12.7Z"/></clipPath>
+<clipPath id="cp_1"><path d="M554.9,511.7V499h54.2v12.7Z"/></clipPath>
+<clipPath id="cq_1"><path d="M609.2,511.7V499h54.4v12.7Z"/></clipPath>
+<clipPath id="cr_1"><path d="M663.7,511.7V499H718v12.7Z"/></clipPath>
+<clipPath id="cs_1"><path d="M718.1,511.7V499h54.2v12.7Z"/></clipPath>
+<clipPath id="ct_1"><path d="M772.4,511.7V499h54.4v12.7Z"/></clipPath>
+<clipPath id="cu_1"><path d="M826.9,511.7V499h54.4v12.7Z"/></clipPath>
+<clipPath id="cv_1"><path d="M65.4,579.7V567h54.3v12.7Z"/></clipPath>
+<clipPath id="cw_1"><path d="M119.8,579.7V567H174v12.7Z"/></clipPath>
+<clipPath id="cx_1"><path d="M174.1,579.7V567h54.4v12.7Z"/></clipPath>
+<clipPath id="cy_1"><path d="M228.6,579.7V567h54.2v12.7Z"/></clipPath>
+<clipPath id="cz_1"><path d="M282.9,579.7V567h54.4v12.7Z"/></clipPath>
+<clipPath id="c10_1"><path d="M337.3,579.7V567h54.3v12.7Z"/></clipPath>
+<clipPath id="c11_1"><path d="M391.6,579.7V567H446v12.7Z"/></clipPath>
+<clipPath id="c12_1"><path d="M446.1,579.7V567h54.2v12.7Z"/></clipPath>
+<clipPath id="c13_1"><path d="M500.4,579.7V567h54.4v12.7Z"/></clipPath>
+<clipPath id="c14_1"><path d="M554.9,579.7V567h54.2v12.7Z"/></clipPath>
+<clipPath id="c15_1"><path d="M609.2,579.7V567h54.4v12.7Z"/></clipPath>
+<clipPath id="c16_1"><path d="M663.7,579.7V567H718v12.7Z"/></clipPath>
+<clipPath id="c17_1"><path d="M718.1,579.7V567h54.2v12.7Z"/></clipPath>
+<clipPath id="c18_1"><path d="M772.4,579.7V567h54.4v12.7Z"/></clipPath>
+<clipPath id="c19_1"><path d="M826.9,579.7V567h54.4v12.7Z"/></clipPath>
+
+<style type="text/css"><![CDATA[
+text { white-space: pre; }
+path, image { pointer-events: none; }
+
+.s1_1{
+font-size: 33.61px;
+font-family: LiberationSerif-Bold_e;
+fill: #000;
+}
+.s2_1{
+font-size: 19.86px;
+font-family: LiberationSerif_o;
+fill: #000;
+}
+.s3_1{
+font-size: 15.28px;
+font-family: LiberationSerif-Bold_e;
+fill: #000;
+}
+.s4_1{
+font-size: 16.81px;
+font-family: LiberationSerif_o;
+fill: #000;
+}
+.s5_1{
+font-size: 18.33px;
+font-family: LiberationSerif_o;
+fill: #000;
+}
+.s6_1{
+font-size: 15.28px;
+font-family: LiberationSerif_o;
+fill: #000;
+}
+.s7_1{
+font-size: 18.33px;
+font-family: OpenSymbol_t;
+fill: #000;
+}
+.s8_1{
+font-size: 12.22px;
+font-family: LiberationSerif_o;
+fill: #000;
+}
+.s9_1{
+font-size: 15.28px;
+font-family: LiberationSerif-Italic_j;
+fill: #000;
+}
+.sa_1{
+font-size: 18.33px;
+font-family: LiberationSerif-Bold_e;
+fill: #000;
+}
+
+.g0_1{
+fill: #000;
+}
+.g1_1{
+fill: #FFF;
+}
+.g2_1{
+fill: none;
+stroke: #000;
+stroke-width: 0.763;
+stroke-linejoin: round;
+}
+.g3_1{
+fill: none;
+stroke: #000;
+stroke-width: 1.069;
+stroke-miterlimit: 10;
+}
+
+]]></style>
+
+</defs>
+<path d="M0,0
+L0,1210
+L935,1210
+L935,0 Z " 
+fill="#FFFFFF" stroke="none"/>
+<g clip-path="url(#c_1)">
+<path fill-rule="evenodd" d="M65.4,267H83.3V253.5H65.4V267Z" class="g0_1"/>
+<path fill-rule="evenodd" d="M863.2,267h18.1V253.5H863.2V267Z" class="g0_1"/>
+<path fill-rule="evenodd" d="M446.1,335h27.1V307.8H446.1V335Z" class="g0_1"/>
+<path fill-rule="evenodd" d="M473.3,362.2h27.1V335H473.3v27.2Z" class="g1_1"/>
+<path fill-rule="evenodd" d="M446.1,389.4h27.1V362.2H446.1v27.2Z" class="g1_1"/>
+<path fill-rule="evenodd" d="M473.3,389.4h27.1V362.2H473.3v27.2Z" class="g0_1"/>
+<path fill-rule="evenodd" d="M473.3,416.5h27.1V389.4H473.3v27.1Z" class="g1_1"/>
+<path fill-rule="evenodd" d="M65.4,729.4H83.3V715.8H65.4v13.6Z" class="g0_1"/>
+<path fill-rule="evenodd" d="M863.2,729.4h18.1V715.8H863.2v13.6Z" class="g0_1"/>
+<path fill-rule="evenodd" d="M65.4,267H83.3V253.5H65.4V267Z" class="g0_1"/>
+<path fill-rule="evenodd" d="M863.2,267h18.1V253.5H863.2V267Z" class="g0_1"/>
+<path fill-rule="evenodd" d="M446.1,335h27.1V307.8H446.1V335Z" class="g0_1"/>
+<path fill-rule="evenodd" d="M473.3,362.2h27.1V335H473.3v27.2Z" class="g1_1"/>
+<path fill-rule="evenodd" d="M446.1,389.4h27.1V362.2H446.1v27.2Z" class="g1_1"/>
+<path fill-rule="evenodd" d="M473.3,389.4h27.1V362.2H473.3v27.2Z" class="g0_1"/>
+<path fill-rule="evenodd" d="M473.3,416.5h27.1V389.4H473.3v27.1Z" class="g1_1"/>
+<path fill-rule="evenodd" d="M65.4,729.4H83.3V715.8H65.4v13.6Z" class="g0_1"/>
+<path fill-rule="evenodd" d="M863.2,729.4h18.1V715.8H863.2v13.6Z" class="g0_1"/>
+<g clip-path="url(#c0_1)">
+<text x="113.7" y="86.5" dx="0,0,0,0,0,0,0,-.1,0,0,0,0,0,0,0,-.1,0,0,0,0,0,0,0,-.1,0,0,0,0,0,0,0,0,0,-.1,0,0" class="s1_1">PHIẾU TRẢ LỜI TRẮC NGHIỆM VÀ TỰ LUẬN </text>
+<text x="85.3" y="141.2" dx="0,0,0,.1,0,0,0,0" class="s2_1">Kì thi: </text>
+<text x="141.6" y="141.2" dx="0,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1" class="s2_1">............................................................................................................................. </text>
+<text x="85.3" y="167.1" dx="0,0,0,0,-.1,0,0,0,.1" class="s2_1">Bài thi: </text>
+<text x="149.2" y="167.1" dx="0,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1,-.1,.1" class="s2_1">............................................................................................................................ </text>
+</g>
+<path d="M65,253.8H881.8M65,308.2H881.8M65,335.4H419.3m26.4,0h55.2m26.4,0H881.8M146.6,362.6H419.3m26.4,0h55.2m108,0H881.8M146.6,389.8H419.3m26.4,0h55.2m108,0H881.8M65,417H881.8M65,430.6H881.8M65,444.2H881.8M65,498.6H881.8M65,512.2H881.8M65,566.6H881.8M65,580.2H881.8M65,634.6H881.8M65,648.2H881.8M65,675.4H609.7M337,702.5H609.7M65,729.9H881.8M65.4,253.5V730.3m18,-14.5v14.5M119.8,430.2V634.9M147,307.8V417.4M174.2,307.8V417.4m0,12.8V634.9M201.4,307.8V417.4M228.6,307.8V417.4m0,12.8V634.9m0,40.1v55.3M255.7,307.8V417.4M282.9,307.8V417.4m0,12.8V634.9M310.1,307.8V417.4M337.3,253.5V417.4m0,12.8V634.9m0,12.9v82.5M364.5,307.8V417.4m0,230.4v82.5M391.7,307.8V417.4m0,12.8V634.9m0,12.9v82.5M418.9,307.8V417.4m0,230.4v82.5M446.1,307.8V417.4m0,12.8V634.9m0,12.9v82.5M473.3,307.8V417.4m0,230.4v82.5M500.5,307.8V417.4m0,12.8V634.9m0,12.9v82.5M527.7,307.8V417.4m0,230.4v82.5M554.9,430.2V634.9m0,12.9v82.5m27.2,-82.5v82.5M609.3,307.8V417.4m0,12.8V634.9m0,12.9v82.5M636.5,307.8V417.4M663.7,307.8V417.4m0,12.8V634.9M690.9,307.8V417.4M718.1,307.8V417.4m0,12.8V634.9M745.2,307.8V417.4M772.4,307.8V417.4m0,12.8V634.9M799.6,307.8V417.4M827,307.8V417.4m0,12.8V634.9M854.2,307.8V417.4m9,298.4v14.5M881.4,253.5V730.3" class="g2_1"/>
+<g clip-path="url(#c0_1)">
+<text x="91.8" y="286.5" dx="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-.1,0" class="s3_1">BẢNG TRẢ LỜI TRẮC NGHIỆM </text>
+<text x="345.7" y="287.1" dx="0,-.1,.1,-.1,.1,0,0,-.1,.1,-.2,.1,.1,-.1,.1,0,0,.1,-.1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" class="s4_1">Họ tên thí sinh: ………………………………………………………… </text>
+<text x="86.6" y="328.5" dx="0,0,-.1" class="s5_1">SBD </text>
+<text x="154.2" y="328.5" class="s5_1">0 </text>
+<text x="181.3" y="328.5" class="s5_1">1 </text>
+<text x="208.5" y="328.5" class="s5_1">2 </text>
+<text x="235.7" y="328.5" class="s5_1">3 </text>
+<text x="262.9" y="328.5" class="s5_1">4 </text>
+<text x="290.1" y="328.5" class="s5_1">5 </text>
+<text x="317.3" y="328.5" class="s5_1">6 </text>
+<text x="344.5" y="328.5" class="s5_1">7 </text>
+<text x="371.7" y="328.5" class="s5_1">8 </text>
+<text x="398.9" y="328.5" class="s5_1">9 </text>
+<text x="543.6" y="328.5" class="s5_1">Mã đề </text>
+<text x="616.5" y="328.5" class="s5_1">0 </text>
+<text x="643.7" y="328.5" class="s5_1">1 </text>
+<text x="670.8" y="328.5" class="s5_1">2 </text>
+<text x="698" y="328.5" class="s5_1">3 </text>
+<text x="725.2" y="328.5" class="s5_1">4 </text>
+<text x="752.4" y="328.5" class="s5_1">5 </text>
+<text x="779.6" y="328.5" class="s5_1">6 </text>
+<text x="806.8" y="328.5" class="s5_1">7 </text>
+<text x="834.2" y="328.5" class="s5_1">8 </text>
+<text x="861.4" y="328.5" class="s5_1">9 </text>
+<text x="81.4" y="381.6" class="s6_1">……… </text>
+<text x="151.4" y="353.4" dx="0,10.9,10.9,10.9,10.9,10.9,10.9,10.9,10.9,10.9" class="s7_1"> </text>
+<text x="543.7" y="381.6" class="s6_1">……… </text>
+<text x="613.7" y="353.4" dx="0,10.9,10.9,10.9,10.9,10.9,10.9,10.9,11,10.9" class="s7_1"> </text>
+<text x="151.4" y="380.6" dx="0,10.9,10.9,10.9,10.9,10.9,10.9,10.9,10.9,10.9" class="s7_1"> </text>
+<text x="613.7" y="380.6" dx="0,10.9,10.9,10.9,10.9,10.9,10.9,10.9,11,10.9" class="s7_1"> </text>
+<text x="151.4" y="407.8" dx="0,10.9,10.9,10.9,10.9,10.9,10.9,10.9,10.9,10.9" class="s7_1"> </text>
+<text x="613.7" y="407.8" dx="0,10.9,10.9,10.9,10.9,10.9,10.9,10.9,11,10.9" class="s7_1"> </text>
+</g>
+<text clip-path="url(#c1_1)" x="89.7" y="442.4" class="s8_1">1 </text>
+<text clip-path="url(#c2_1)" x="144.1" y="442.4" class="s8_1">2 </text>
+<text clip-path="url(#c3_1)" x="198.5" y="442.4" class="s8_1">3 </text>
+<text clip-path="url(#c4_1)" x="252.8" y="442.4" class="s8_1">4 </text>
+<text clip-path="url(#c5_1)" x="307.2" y="442.4" class="s8_1">5 </text>
+<text clip-path="url(#c6_1)" x="361.6" y="442.4" class="s8_1">6 </text>
+<text clip-path="url(#c7_1)" x="416" y="442.4" class="s8_1">7 </text>
+<text clip-path="url(#c8_1)" x="470.4" y="442.4" class="s8_1">8 </text>
+<text clip-path="url(#c9_1)" x="524.8" y="442.4" class="s8_1">9 </text>
+<text clip-path="url(#ca_1)" x="576.1" y="442.4" class="s8_1">10 </text>
+<text clip-path="url(#cb_1)" x="630.5" y="442.4" class="s8_1">11 </text>
+<text clip-path="url(#cc_1)" x="684.9" y="442.4" class="s8_1">12 </text>
+<text clip-path="url(#cd_1)" x="739.3" y="442.4" class="s8_1">13 </text>
+<text clip-path="url(#ce_1)" x="793.7" y="442.4" class="s8_1">14 </text>
+<text clip-path="url(#cf_1)" x="848.2" y="442.4" class="s8_1">15 </text>
+<text clip-path="url(#cg_1)" x="86.6" y="510.4" class="s8_1">16 </text>
+<text clip-path="url(#ch_1)" x="141" y="510.4" class="s8_1">17 </text>
+<text clip-path="url(#ci_1)" x="195.4" y="510.4" class="s8_1">18 </text>
+<text clip-path="url(#cj_1)" x="249.8" y="510.4" class="s8_1">19 </text>
+<text clip-path="url(#ck_1)" x="304.2" y="510.4" class="s8_1">20 </text>
+<text clip-path="url(#cl_1)" x="358.6" y="510.4" class="s8_1">21 </text>
+<text clip-path="url(#cm_1)" x="413" y="510.4" class="s8_1">22 </text>
+<text clip-path="url(#cn_1)" x="467.3" y="510.4" class="s8_1">23 </text>
+<text clip-path="url(#co_1)" x="521.7" y="510.4" class="s8_1">24 </text>
+<text clip-path="url(#cp_1)" x="576.1" y="510.4" class="s8_1">25 </text>
+<text clip-path="url(#cq_1)" x="630.5" y="510.4" class="s8_1">26 </text>
+<text clip-path="url(#cr_1)" x="684.9" y="510.4" class="s8_1">27 </text>
+<text clip-path="url(#cs_1)" x="739.3" y="510.4" class="s8_1">28 </text>
+<text clip-path="url(#ct_1)" x="793.7" y="510.4" class="s8_1">29 </text>
+<text clip-path="url(#cu_1)" x="848.2" y="510.4" class="s8_1">30 </text>
+<text clip-path="url(#cv_1)" x="86.6" y="578.4" class="s8_1">31 </text>
+<text clip-path="url(#cw_1)" x="141" y="578.4" class="s8_1">32 </text>
+<text clip-path="url(#cx_1)" x="195.4" y="578.4" class="s8_1">33 </text>
+<text clip-path="url(#cy_1)" x="249.8" y="578.4" class="s8_1">34 </text>
+<text clip-path="url(#cz_1)" x="304.2" y="578.4" class="s8_1">35 </text>
+<text clip-path="url(#c10_1)" x="358.6" y="578.4" class="s8_1">36 </text>
+<text clip-path="url(#c11_1)" x="413" y="578.4" class="s8_1">37 </text>
+<text clip-path="url(#c12_1)" x="467.3" y="578.4" class="s8_1">38 </text>
+<text clip-path="url(#c13_1)" x="521.7" y="578.4" class="s8_1">39 </text>
+<text clip-path="url(#c14_1)" x="576.1" y="578.4" class="s8_1">40 </text>
+<text clip-path="url(#c15_1)" x="630.5" y="578.4" class="s8_1">41 </text>
+<text clip-path="url(#c16_1)" x="684.9" y="578.4" class="s8_1">42 </text>
+<text clip-path="url(#c17_1)" x="739.3" y="578.4" class="s8_1">43 </text>
+<text clip-path="url(#c18_1)" x="793.7" y="578.4" class="s8_1">44 </text>
+<text clip-path="url(#c19_1)" x="848.2" y="578.4" class="s8_1">45 </text>
+<g clip-path="url(#c0_1)">
+<text x="111.5" y="668.4" dx="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,.1,0,0,0,0" class="s5_1">Phần dành cho giáo viên </text>
+<text x="347.3" y="667.2" class="s6_1">0 </text>
+<text x="374.5" y="667.2" class="s6_1">1 </text>
+<text x="401.7" y="667.2" class="s6_1">2 </text>
+<text x="428.8" y="667.2" class="s6_1">3 </text>
+<text x="456" y="667.2" class="s6_1">4 </text>
+<text x="483.2" y="667.2" class="s6_1">5 </text>
+<text x="510.4" y="667.2" class="s6_1">6 </text>
+<text x="537.6" y="667.2" class="s6_1">7 </text>
+<text x="564.8" y="667.2" class="s6_1">8 </text>
+<text x="592" y="667.2" class="s6_1">9 </text>
+<text x="617.7" y="666" dx="0,-.1,0,0,.1,0,0,0,0,-.2,0,0,.1,0,0,-.1,0,0,0,0,0" class="s9_1">Cách tô điểm tự luận: </text>
+<text x="617.7" y="686.6" dx="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-.1,0,0,0,0,0,0,0,0,0,0,0,0" class="s9_1">- Hàng trên là giá trị phần nguyên </text>
+<text x="617.7" y="707.4" dx="0,0,0,0,0,0,0,0,0,.1,0,0,0,0,0,0,-.2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" class="s9_1">- Hàng dưới là giá trị phần thập phân </text>
+<text x="108" y="709.2" dx="0,0,0,0,0,0,0,.1,0,0,0,0" class="s5_1">Điểm tự luận </text>
+<text x="342.7" y="693.3" dx="0,10.9,10.9,10.9,10.9,10.9,10.9,10.9,10.9,10.9" class="s7_1"> </text>
+<text x="342.7" y="720.7" dx="0,10.9,10.9,10.9,10.9,10.9,10.9,10.9,10.9,10.9" class="s7_1"> </text>
+<text x="436.9" y="780.7" dx="0,-.1,.1,0,0,0,-.1" class="sa_1">TỰ LUẬN </text>
+</g>
+<path d="M436.9,782.4h83.3" class="g3_1"/>
+<g clip-path="url(#c0_1)">
+<text x="65.1" y="820.1" class="s8_1">........................................................................................................................................................................................................................................................................ </text>
+<text x="65.1" y="859.5" class="s8_1">........................................................................................................................................................................................................................................................................ </text>
+<text x="65.1" y="898.9" class="s8_1">........................................................................................................................................................................................................................................................................ </text>
+<text x="65.1" y="938.4" class="s8_1">........................................................................................................................................................................................................................................................................ </text>
+<text x="65.1" y="977.8" class="s8_1">........................................................................................................................................................................................................................................................................ </text>
+<text x="65.1" y="1017.2" class="s8_1">........................................................................................................................................................................................................................................................................ </text>
+<text x="65.1" y="1056.6" class="s8_1">........................................................................................................................................................................................................................................................................ </text>
+<text x="65.1" y="1096" class="s8_1">........................................................................................................................................................................................................................................................................ </text>
+<text x="65.1" y="1135.4" class="s8_1">........................................................................................................................................................................................................................................................................ </text>
+<text x="882.8" y="1167.7" class="s5_1">1 </text>
+</g>
+
+</g>
+
+<!-- Any embedded fonts defined here -->
+<style type="text/css" ><![CDATA[
+
+@font-face {
+	font-family: LiberationSerif-Bold_e;
+	src: url("fonts/LiberationSerif-Bold_e.woff") format("woff");
+}
+
+@font-face {
+	font-family: LiberationSerif-Italic_j;
+	src: url("fonts/LiberationSerif-Italic_j.woff") format("woff");
+}
+
+@font-face {
+	font-family: LiberationSerif_o;
+	src: url("fonts/LiberationSerif_o.woff") format("woff");
+}
+
+@font-face {
+	font-family: OpenSymbol_t;
+	src: url("fonts/OpenSymbol_t.woff") format("woff");
+}
+
+]]></style>
+
+</svg>
