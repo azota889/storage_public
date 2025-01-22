@@ -1,0 +1,302 @@
+
+@font-face {
+    font-family: font_chu_dep;
+    src: url(HP0015HB.ttf);
+}
+
+@font-face {
+    font-family: font_chu_dep_z;
+    src: url(HP0015HB.ttf);
+} 
+@font-face {
+    font-family: font_chu_in;
+    src: url(Roboto-Thin.ttf);
+} 
+@font-face {
+    font-family: font_chu_in_nghieng;
+    src: url(MyriadPro-It.otf);
+} 
+@font-face {
+    font-family: font_chu_in_dam;
+    src: url(MyriadPro-BoldIt.otf);
+} 
+.d-none{
+    display:none;
+}
+#mnote_mark_hide{
+    font-size: 28px;
+    font-weight: bold;
+    color: black;
+    margin-top: 20px;
+    margin-left: 30px;
+    cursor: pointer;
+}
+.bt-edit-bg{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: lightgreen;
+    font-size: 45px;
+}
+#mnote_help{
+    width:220px;
+}
+#menu_text_font{
+    position: absolute;
+    background-color: black;
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    top: 60px;
+    left: 10px;
+    color: white;
+    padding-left: 15px;
+    padding-top: 5px;
+    transform: scale(0.6);
+    transform-origin: 0% 0%;
+    display: none;
+}
+.font_chu_dep{
+    font-family: 'font_chu_dep';
+    font-size: 25px;
+    padding: 5px;
+    cursor: pointer;
+}
+.font_chu_in{
+    font-family: 'font_chu_in';
+    font-size: 25px;
+    padding: 5px;
+    cursor: pointer;
+}
+.font_chu_in_nghieng{
+    font-family: 'font_chu_in_nghieng';
+    font-size: 25px;
+    padding: 5px;
+    cursor: pointer;
+}
+.font_chu_in_dam{
+    font-family: 'font_chu_in_dam';
+    font-size: 25px;
+    padding: 5px;
+    cursor: pointer;
+}
+#color_content_brush {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+#option_brush{
+    position: absolute;
+    background-color: black;
+    width: 250px;
+    height: 45px;
+    left: 0px;
+    top: -44px;
+}
+#mnote_setting_bt{
+    position: absolute;
+    top:5px;
+    left:5px;
+    width:40px;
+    height:40px;
+}
+#mnote_setting_menu{
+    width:300px!important;
+    top:60px !important;
+}
+
+#setting_static_text{
+    position: absolute;
+    display:none;
+    top:50px;
+    left:0px;
+    width:100%;
+    height: 100%;
+    z-index: 999999;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+#setting_static_text_close{
+    position: absolute;
+    right: 10px;
+    top:0px;
+}
+
+#mnote_static_text_txt{
+    margin-top:15px;
+}
+#mnote_static_text_img{
+    margin-top:15px;
+}
+
+#setting_static_text_content{
+    width:100%;
+    height: fit-content;
+    min-height: 100%;
+    padding: 30px;
+}
+
+.setting_title{
+    font-size: 16px;
+    font-weight: bold;
+}
+.setting_text{
+    font-family: 'font_chu_dep';
+    font-size: 35px;
+    color: red;
+    margin-left: 20px;
+    min-height: 50px;
+    min-width: 50px;
+    padding: 10px;
+    border: dashed 1px;
+}
+.setting_correct ,.setting_wrong{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+.setting_img_bt{
+    margin-left: 20px;
+}
+
+#mark_comment_txt{
+    height:200px;
+    padding-right: 10px;
+}
+#mnote_mark_emoji_bt{
+    float:right;
+    cursor: pointer;
+}
+#mnote_mark_emoji_container{
+    min-height: 50px;
+}
+#emoji_chosen{
+    width:100%;
+    height:100px;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    margin-top: 20px;
+    background-color: white;
+    margin-bottom: 10px;
+    display: none;
+}
+#emoji_chosen_container{
+    height:80px;
+    margin-top: 10px;
+}
+#mark_comment_txt{
+    min-height: 200px;
+}
+
+#math_editor{
+    width:100%;
+    max-width: 600px;
+    height:300px;
+    position: absolute;
+    bottom: 0px;
+    background-color: white;
+    border-radius: 10px;
+    z-index: 9999999;
+    display: none;
+}
+#math_bt{
+    position: absolute;
+    top: 7px;
+    display: flex;
+    width:100%;
+    justify-content: center;
+    align-items: center;
+
+}
+#math_editor_close{
+    position: absolute;
+    right:0px;
+}
+#math_bt a{
+    margin-left: 20px;
+
+}
+#math_editor_pad{
+    margin-top: 50px;
+    width:100%;
+    height:100%;
+
+}
+#mathquill_editor{
+    width:100%;
+    height:100%;
+}
+#mnote_user_info{
+    background-color: white;
+    border-radius: 2px;
+    padding: 27px;
+    font-size: 26px;
+    font-family: 'handwriting_font';
+    display: none;
+}
+#mnote_user_time{
+    position: absolute;
+    top: 27px;
+    right: 27px;
+}
+#mnote_user_homework{
+    text-align: center;
+    margin-top: 10px;
+    font-size: 24px;
+    padding-left: 150px;
+    padding-right: 150px;
+}
+#static_img_corect_chosen{
+    width:100%;
+    height:60px;
+    margin-top: 30px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+#static_img_wrong_chosen{
+    width:100%;
+    height:60px;
+    margin-top: 30px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+#static_img_corect_container{
+    width:auto;
+    height:60px;
+}
+#static_img_wrong_container{
+    width:auto;
+    height:60px;
+}
+.static_img_correct{
+    margin-left: 20px;
+    cursor: pointer;
+}
+.static_img_wrong{
+    margin-left: 20px;
+    cursor: pointer;
+}
+#mnote_menu_draw div{
+    transform: scale(1);
+}
+#mnote_setting_zoom_in{
+    position: absolute;
+    top: 5px;
+    left: 55px;
+    width: 40px;
+    height: 40px;
+    display: none;
+}
+#mnote_setting_zoom_out{
+    position: absolute;
+    top: 5px;
+    left: 105px;
+    width: 40px;
+    height: 40px;
+    display: none;
+}
+
+
