@@ -1,0 +1,6 @@
+#indexLoading { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+#unSupportBrowser, #unSupportCommonBrowser{ line-height: 2.2em; font-size: 16px; }
+#unSupportBrowser a, #unSupportCommonBrowser a{ color:#06c; }
+
+.exportPdfModeIndex { background-color: #fff; padding-top: 30px; padding-bottom: 30px; }
+.break-page-print { page-break-after: always; }
