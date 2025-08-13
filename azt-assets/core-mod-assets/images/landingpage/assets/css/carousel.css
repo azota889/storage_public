@@ -1,0 +1,50 @@
+.school-logo {
+    width: 160px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid #f3f4f6;
+}
+
+.school-logo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.school-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: grayscale(20%);
+    transition: filter 0.3s ease;
+}
+
+.school-logo:hover img {
+    filter: grayscale(0%);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .school-logo {
+        width: 100px;
+        height: 70px;
+        padding: 8px;
+    }
+
+    /* Show fewer logos on mobile */
+    .min-w-full .school-logo:nth-child(n+6) {
+        display: none;
+    }
+}
+
+@media (max-width: 640px) {
+    .min-w-full .school-logo:nth-child(n+5) {
+        display: none;
+    }
+}

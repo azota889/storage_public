@@ -1,0 +1,50 @@
+body {
+    font-family: "Quicksand", sans-serif !important;
+}
+
+/* Custom animations */
+
+
+/* Custom utilities for Canva integration */
+.section {
+    width: 100%;
+}
+
+.container {
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+    .container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+/* Mobile menu animation */
+.mobile-menu {
+    transition: all 0.3s ease-in-out;
+}
+
+.mobile-menu.hidden {
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+}
+
+.mobile-menu.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
