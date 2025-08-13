@@ -1,0 +1,61 @@
+    @media (max-width: 768px) {
+        .text-3xl {
+            font-size: 1.25rem !important;
+            line-height: 1.75rem !important;
+        }
+
+        .text-2xl {
+            font-size: 1.125rem !important;
+            line-height: 1.625rem !important;
+        }
+
+        .text-xl {
+            font-size: 1rem !important;
+            line-height: 1.5rem !important;
+        }
+
+        .text-lg {
+            font-size: 0.875rem !important;
+            line-height: 1.375rem !important;
+        }
+
+        .text-base {
+            font-size: 0.8125rem !important;
+            line-height: 1.25rem !important;
+        }
+
+        .text-sm {
+            font-size: 0.75rem !important;
+            line-height: 1.125rem !important;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .md\:hidden {
+            display: none !important;
+        }
+
+        .hidden {
+            display: block !important;
+        }
+
+        .md\:flex-row,
+        .lg\:flex-row {
+            flex-direction: column !important;
+        }
+
+        .md\:text-left,
+        .lg\:text-left {
+            text-align: center !important;
+        }
+
+        /* Mobile menu cho iPad */
+        #mobile-menu-btn {
+            display: block !important;
+        }
+
+        .md\:flex.items-center.space-x-12,
+        .md\:flex.items-center.space-x-4 {
+            display: none !important;
+        }
+    }

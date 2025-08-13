@@ -1,73 +1,59 @@
-function setCookie(cname, cvalue, exdays) {
-    const d = new Date();
-    d.setTime(d.getTime() + (exdays*24*60*60*1000));
-    let expires = "expires="+ d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-}
-function getCookie(cname) {
-    let name = cname + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(';');
-    for(let i = 0; i <ca.length; i++) {
-        let c = ca[i];
-        while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-        }
+(function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != "dataLayer" ? "&l=" + l : "";
+    j.async = true;
+    j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, "script", "dataLayer", "GTM-K8GJT9F");
+
+function setLang(la) {
+    localStorage.setItem("switch_language_code", la);
+    if (la == "en") {
+        window.location.href = "/privacy/en/index.html";
     }
-    return "";
+    if (la == "vi") {
+        window.location.href = "/";
+    }
 }
-function checkCookie() {
-    let lang = getCookie("languageAZT");
-    if (lang != "") {
-        if(lang == 'vi'){
-            VietnameseLanguagePage();
-        }else{
-            EnglishLanguagePage()
-        }
+
+$(document).ready(function () {
+    $("#login_div").attr("href", "/vi/auth/login?t=" + Date.now());
+    $("#register_div").attr("href", "/vi/auth/register?t=" + Date.now());
+    if (localStorage.hasOwnProperty("user_obj")) {
+        window.location.href = "/vi/auth/login?t=" + Date.now();
     } else {
-        lang = getLanguageDefault();
-        if(lang == 'vi-VN'){
-            lang = 'vi'
-        }else{
-            lang = 'en'
-        }
-        if (lang != "" && lang != null) {
-            setCookie("languageAZT", lang, 30);
-        }
-        if(lang == 'vi'){
-            VietnameseLanguagePage()
-        }else{
-            EnglishLanguagePage()
+        if (localStorage.getItem("switch_language_code") == "en") {
+            window.location.href = "/privacy/en/index.html";
         }
     }
-}
-function getLanguageDefault(){
-    let userLang = 'vi-VN'
-    return userLang;
-}
-function VietnameseLanguagePage() {
-    let wrapperVN = document.getElementById('wrapper_vi');
-    wrapperVN.style.display = 'block';
-}
-function EnglishLanguagePage() {
-    let wrapperEN = document.getElementById('wrapper_en');
-    wrapperEN.style.display = 'block';
-}
-function changeVNLanguage() {
-    setCookie("languageAZT", 'vi', 30);
-    location.reload()
-}
-function changeENLanguage() {
-    console.log('en');
-    setCookie("languageAZT", 'en', 30);
-    location.reload()
-}
-checkCookie()
+});
 
+// Smooth scrolling với Tailwind
+$(document).ready(function () {
+    $("#gotoIntro").on("click", function () {
+        document.getElementById("introduce").scrollIntoView({
+            behavior: "smooth",
+        });
+    });
 
-// wow js
-new WOW().init();
+    $("#gotoFeature").on("click", function () {
+        document.getElementById("feature").scrollIntoView({
+            behavior: "smooth",
+        });
+    });
+});
 
+function play() {
+    var el = document.getElementById("azt-video");
+    el.play();
+}
+
+function onPlay() {
+    document.getElementById("azt-video").scrollIntoView({
+        behavior: "smooth",
+    });
+    document.getElementById("video-cover").classList.add("bg-gray-100");
+}
