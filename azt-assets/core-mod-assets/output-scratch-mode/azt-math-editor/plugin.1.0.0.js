@@ -250,7 +250,7 @@
 				.loadMultipleScript([
 					{
 						name: 'tex-mml-chtml',
-						url: 'https://239114911.e.cdneverest.net/cdnazota/azt-assets/core-mod-assets/js/tex-mml-chtml/tex-mml-chtml.js',
+						url: 'https://nextcdn.azota.vn/cdnazota/azt-assets/core-mod-assets/js/tex-mml-chtml/tex-mml-chtml.js',
 						mode: CONST_TYPE_MODE_SOURCE.FRAME
 					},
 					{
