@@ -432,7 +432,7 @@ showReloadLink();
 function testInternetSpeed() {
 	try {
 		var startTime = new Date().getTime();
-		var testFileURL = 'https://nextcdn.azota.vn/cdnazota/azt-assets/core-mod-assets/index-assets/test_internet_speed.mp3';
+		var testFileURL = 'https://nextcdnnew.azota.vn/cdnazota/azt-assets/core-mod-assets/index-assets/test_internet_speed.mp3';
 		fetch(testFileURL)
 			.then(function (response) {
 				if (response.ok) {

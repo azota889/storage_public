@@ -200,7 +200,7 @@
 				.loadMultipleScript([
 					{
 						name: 'mnpaint_bundle.js',
-						url: 'https://nextcdn.azota.vn/cdnazota/azt-assets/core-mod-assets/js/mnpaint_bundle.js?v=0.3',
+						url: 'https://nextcdnnew.azota.vn/cdnazota/azt-assets/core-mod-assets/js/mnpaint_bundle.js?v=0.3',
 						mode: CONST_TYPE_MODE_SOURCE.DOCUMENT
 					}
 				])
